@@ -4,12 +4,12 @@ BEHAT SETUP & EXECUTION
 Get the behat framework
 =======================
 * Install the framework:
-  * composer require bm/behat_framework
+  * composer require cw_test/behat_framework
 
 Tool setup
 ==========
 * Install Behat:
-  * cd vendor/bm/behat_framework
+  * cd vendor/cw_test/behat_framework
   * ./bootstrap.sh
     
 * Inside 'Behat/behat.local.yml', update:
@@ -39,5 +39,5 @@ or
 Test Results
 ============
 The results of all tests will be stored in 
-  * <LOCAL DRUPAL INSTALL>/cw_test/Results/Twig_***.html
+  * [LOCAL DRUPAL INSTALL FOLDER]/Results/Twig_***.html
 
