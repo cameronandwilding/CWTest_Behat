@@ -1,0 +1,16 @@
+# Ignore cache/phpStorm generated files
+.idea
+
+# Ignore files/directories created by installs
+cache
+Behat/bin
+Behat/vendor
+Behat/pages
+Behat/images
+Behat/behat.local.yml
+
+# Ignore Servers installs
+Servers/selenium.jar
+
+# Ignore Results
+Results

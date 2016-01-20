@@ -1,0 +1,79 @@
+default:
+  suites:
+    login:
+      paths: [ %paths.base%/features/Login ]
+      filters:
+        tags: @login
+      contexts:
+        - LoginContext
+        - MyAccountContext
+        - PageContext
+        - HelperContext:
+            parameters:
+              screenshot_path: %paths.base%/../Results/Behat/screenshots
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+    article:
+      paths: [ %paths.base%/features/Article ]
+      filters:
+        tags: @article
+      contexts:
+        - ArticleContext
+        - PageContext
+        - HelperContext:
+            parameters:
+              screenshot_path: %paths.base%/../Results/Behat/screenshots
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+    roles:
+      paths: [ %paths.base%/features/Roles ]
+      filters:
+        tags: @roles
+      contexts:
+        - PageContext
+        - HelperContext:
+            parameters:
+              screenshot_path: %paths.base%/../Results/Behat/screenshots
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+  extensions:
+    Behat\MinkExtension:
+      files_path: %paths.base%/images
+      goutte: ~
+      selenium2:
+        wd_host: "http://localhost:4444/wd/hub"
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      text:
+        log_out: "My account"
+    emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+       name: html
+       renderer: Twig
+       print_args: true
+       print_outp: true
+       loop_break: true
+  formatters:
+    pretty: true
+    html:
+      output_path: %paths.base%/../Results/Behat
+
+imports:
+  - behat.local.yml
+
+chrome:
+  extensions:
+    Behat\MinkExtension:
+      browser_name: chrome
+
+firefox:
+  extensions:
+    Behat\MinkExtension:
+      browser_name: firefox
+
+phantomjs:
+  extensions:
+    Behat\MinkExtension:
+      selenium2:
+        wd_host: "http://localhost:4445/wd/hub"
+
