@@ -29,7 +29,7 @@ This is only required if you want to run tests on Chrome.
 Test Execution
 ==============
 1. Open a terminal window.
-2. Navigate to <LOCAL DRUPAL INSTALL>/cw_test/Behat
+2. Navigate to [LOCAL DRUPAL INSTALL FOLDER]/Behat
 3. To execute the tests, select one of the following options based on the format './run-behat.sh [tag] [profile]':
   - ./run-behat.sh regression firefox
 or
