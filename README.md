@@ -1,17 +1,19 @@
-BEHAT SETUP & EXECUTION
-=======================
+SETUP & EXECUTION
+=================
 
-Get the behat framework
-=======================
+Get the framework
+=================
 * Install the framework:
   * composer require cw_test/behat_framework
 
-Tool setup
-==========
+Behat setup
+===========
 * Install Behat:
   * cd vendor/cw_test/behat_framework
   * ./bootstrap.sh
     
+Behat configuration
+===================
 * Inside 'Behat/behat.local.yml', update:
   * the 'base_url' to your local site url
   * the 'drupal_root' value to the path to your local drupal installation.
@@ -31,6 +33,7 @@ Test Execution
 1. Open a terminal window.
 2. Navigate to [LOCAL DRUPAL INSTALL FOLDER]/Behat
 3. To execute the tests, select one of the following options based on the format './run-behat.sh [tag] [profile]':
+
   - ./run-behat.sh regression firefox
 or
   - ./run-behat.sh regression chrome
