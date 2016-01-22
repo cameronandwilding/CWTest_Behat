@@ -7,7 +7,7 @@
     }
   ],
   "scripts": {
-    "post-update-cmd": [
+    "post-install-cmd": [
       "./bootstrap.sh"
     ]
   }
