@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #  Get Selenium Server.
-wget http://selenium-release.storage.googleapis.com/2.48/selenium-server-standalone-2.48.2.jar -O Servers/selenium.jar
+wget http://selenium-release.storage.googleapis.com/2.49/selenium-server-standalone-2.49.1.jar -O Servers/selenium.jar
 
 #  Install Behat via Composer.
 export COMPOSER_HOME="./"

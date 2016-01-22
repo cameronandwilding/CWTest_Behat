@@ -5,5 +5,10 @@
       "name": "Cameron and Wilding",
       "email": "info@cameronandwilding.com"
     }
-  ]
+  ],
+  "scripts": {
+    "post-update-cmd": [
+      "./bootstrap.sh"
+    ]
+  }
 }

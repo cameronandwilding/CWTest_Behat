@@ -1,16 +1,12 @@
 SETUP & EXECUTION
 =================
 
+
 Get the framework
 =================
 * Install the framework:
   * composer require cw_test/behat_framework
-
-Behat setup
-===========
-* Install Behat:
-  * cd vendor/cw_test/behat_framework
-  * ./bootstrap.sh
+    
     
 Behat configuration
 ===================

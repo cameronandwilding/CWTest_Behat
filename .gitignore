@@ -2,6 +2,7 @@
 .idea
 
 # Ignore files/directories created by installs
+vendor
 cache
 Behat/bin
 Behat/vendor
