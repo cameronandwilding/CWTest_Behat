@@ -1,14 +1,20 @@
 SETUP & EXECUTION
 =================
 
+Select a location for the framework
+===================================
+Create a folder, ideally inside your Drupal project root.
+
+
 
 Get the framework
 =================
-Get the framework:
+In terminal, open the above folder and type:
 
 ```
 composer require cw_test/behat_framework
 ``` 
+
     
 Install the framework
 ===================
@@ -139,3 +145,13 @@ Points abouts the `CONTEXT` file:
 
 Follow the syntax and naming conventions from other CONTEXT files.
 Keep all functions as short as possible, ideally doing one thing each, like filling in a text field.
+
+
+
+TROUBLESHOOTING
+===============
+1. If you get API rate limit messages during the `./bootstrap.sh` step, please see:
+https://github.com/composer/composer/blob/master/doc/articles/troubleshooting.md#api-rate-limit-and-oauth-tokens
+
+2. If you get the folowing when running the tests, please upgrade your version of java:
+`Exception in thread "main" java.lang.UnsupportedClassVersionError: org/openqa/grid/selenium/GridLauncher : Unsupported major.minor version 51.0`
