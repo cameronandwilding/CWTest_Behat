@@ -21,8 +21,9 @@
     "bin-dir": "bin/"
   },
   "scripts": {
-    "post-autoload-dump": [
-      "cd vendor/cw_test/behat_framework && ./bootstrap.sh"
+    "post-install-dump": [
+      "cd vendor/cw_test/behat_framework",
+      "./bootstrap.sh"
     ]
   }
 }
