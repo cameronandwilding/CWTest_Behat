@@ -12,7 +12,17 @@ composer require cw_test/behat_framework
     
 Behat configuration
 ===================
-Inside `Behat/behat.local.yml`, update:
+1. Run the bootstrap shell script:
+
+```
+cd vendor/cw_behat/framework
+```
+
+```
+./bootstrap.sh
+```
+
+2. Inside `Behat/behat.local.yml`, update:
 
 * the `base_url` to your local site url
 * the `drupal_root` value to the path to your local drupal installation.
