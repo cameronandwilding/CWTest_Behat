@@ -22,7 +22,7 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "./bootstrap.sh"
+      "cd vendor/cw_test/behat_framework && ./bootstrap.sh"
     ]
   }
 }
