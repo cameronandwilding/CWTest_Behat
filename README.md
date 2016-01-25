@@ -15,14 +15,14 @@ Install the framework
 1. Run the bootstrap shell script:
 
 ```
-cd vendor/cw_behat/framework
+cd vendor/cw_test/behat_framework
 ```
 
 ```
 ./bootstrap.sh
 ```
 
-2. Inside `Behat/behat.local.yml`, update:
+2. Inside `vendor/cw_test/behat_framework/Behat/behat.local.yml`, update:
 
 * the `base_url` to your local site url
 * the `drupal_root` value to the path to your local drupal installation.
