@@ -4,13 +4,13 @@ SETUP & EXECUTION
 
 Get the framework
 =================
-Install the framework:
+Get the framework:
 
 ```
 composer require cw_test/behat_framework
 ``` 
     
-Behat configuration
+Install the framework
 ===================
 1. Run the bootstrap shell script:
 
@@ -37,7 +37,6 @@ This is only required if you want to run tests on Chrome.
 2. Save it to `/usr/local/bin`
 
 
-
 Verify Setup Successful
 =======================
 Navigate to:
@@ -49,10 +48,11 @@ Navigate to:
 Execute the following:
 
 ```
-./run-behat.sh login firefox
+./run-behat.sh setup firefox
 ```
 
 You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
+
 
 Test Execution
 ==============
