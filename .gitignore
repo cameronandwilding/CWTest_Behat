@@ -10,8 +10,8 @@ Behat/pages
 Behat/images
 Behat/behat.local.yml
 
-# Ignore Servers installs
-Servers/selenium.jar
+# Ignore Servers
+Servers
 
 # Ignore Results
 Results
