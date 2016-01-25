@@ -37,6 +37,23 @@ This is only required if you want to run tests on Chrome.
 2. Save it to `/usr/local/bin`
 
 
+
+Verify Setup Successful
+=======================
+Navigate to:
+
+```
+[LOCAL DRUPAL INSTALL FOLDER]/Behat
+```
+
+Execute the following:
+
+```
+./run-behat.sh login firefox
+```
+
+You should see `6 scenarios (6 passed)` in the terminal window after 15-20 seconds.
+
 Test Execution
 ==============
 Navigate to:
