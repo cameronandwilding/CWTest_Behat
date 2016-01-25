@@ -52,7 +52,7 @@ Execute the following:
 ./run-behat.sh login firefox
 ```
 
-You should see `6 scenarios (6 passed)` in the terminal window after 15-20 seconds.
+You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 Test Execution
 ==============
@@ -124,7 +124,7 @@ The basic process for writing any test would be:
 
 
 Points abouts the `FEATURE` file:
-
+ 
 Follow the syntax used in other tests.
 Where possible, re-use existing sentences from the `.feature` file as these will already have been automated.
 If you are creating a new sentence, keep it short but descriptive.
