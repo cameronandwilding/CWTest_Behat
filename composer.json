@@ -19,10 +19,5 @@
   },
   "config": {
     "bin-dir": "bin/"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "cd vendor/cw_test/behat_framework && ./bootstrap.sh"
-    ]
   }
 }
