@@ -21,7 +21,7 @@
     "bin-dir": "bin/"
   },
   "scripts": {
-    "post-update-cmd": [
+    "post-install-cmd": [
       "cd vendor/cw_test/behat_framework && ./bootstrap.sh"
     ]
   }
