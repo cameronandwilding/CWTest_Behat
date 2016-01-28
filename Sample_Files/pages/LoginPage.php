@@ -51,6 +51,7 @@ class LoginPage extends Page {
 
   /**
    * All fields.
+   *
    * @return array
    */
   public function get_all_fields() {
