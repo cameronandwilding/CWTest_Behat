@@ -1,5 +1,12 @@
 <?php
+/**
+ * @file
+ * Login page file.
+ */
 
+/**
+ * Class LoginPage implements the behavior for login pages.
+ */
 class LoginPage extends Page {
 
   /**
@@ -43,9 +50,10 @@ class LoginPage extends Page {
 
   /**
    * The path.
+   *
    * @return string
    */
-  public function get_path() {
+  public function getPath() {
     return $this->path;
   }
 
@@ -58,7 +66,11 @@ class LoginPage extends Page {
   }
 
   /**
-   * A specific field.
+   * Gets a field.
+   *
+   * @param string $field
+   *   A specific field.
+   *
    * @return string
    */
   public function get_field($field) {

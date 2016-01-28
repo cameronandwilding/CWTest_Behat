@@ -3,9 +3,21 @@
 class LoginContext extends PageContext  {
 
   /**
+   * Login Page instance.
+   *
    * @var LoginPage
    */
   private $login_page;
+
+  // Fields.
+  const FIELD_USERNAME = 'USERNAME';
+  const FIELD_PASSWORD = 'PASSWORD';
+
+  // Buttons.
+  const BUTTON_LOG_IN = 'LOG_IN';
+
+  // Message regions.
+  const MESSAGE_REGION_LOGIN_FAILURE = 'LOGIN_FAILURE';
 
   /**
    * LoginContext constructor.
@@ -16,6 +28,8 @@ class LoginContext extends PageContext  {
   }
 
   /**
+   * Visits the login page.
+   *
    * @Given I visit the Login page
    */
   public function visit_login_page() {
@@ -29,7 +43,7 @@ class LoginContext extends PageContext  {
   private function fill_username_field($username) {
     $this->helper_context->getSession()
       ->getPage()
-      ->fillField($this->login_page->get_field('USERNAME'), $username);
+      ->fillField($this->login_page->get_field(self::FIELD_USERNAME), $username);
   }
 
   /**
@@ -39,7 +53,7 @@ class LoginContext extends PageContext  {
   private function fill_password_field($password) {
     $this->helper_context->getSession()
       ->getPage()
-      ->fillField($this->login_page->get_field('PASSWORD'), $password);
+      ->fillField($this->login_page->get_field(self::FIELD_PASSWORD), $password);
   }
 
   /**
@@ -48,7 +62,7 @@ class LoginContext extends PageContext  {
   private function press_login_button() {
     $this->helper_context->getSession()
       ->getPage()
-      ->pressButton($this->login_page->get_button('LOG_IN'));
+      ->pressButton($this->login_page->get_button(self::BUTTON_LOG_IN));
   }
 
   /**
@@ -100,8 +114,8 @@ class LoginContext extends PageContext  {
    * @Given I should see the login failure message
    */
   public function i_should_see_the_login_failure_message() {
-    $this->helper_context->iCanSeeInTheRegion('Unrecognized username or password.', $this->login_page->get_message_region('LOGIN_FAILURE'));
-    $this->helper_context->iCanSeeInTheRegion('Have you forgotten your password?', $this->login_page->get_message_region('LOGIN_FAILURE'));
+    $this->helper_context->iCanSeeInTheRegion('Unrecognized username or password.', $this->login_page->get_message_region(self::MESSAGE_REGION_LOGIN_FAILURE));
+    $this->helper_context->iCanSeeInTheRegion('Have you forgotten your password?', $this->login_page->get_message_region(self::MESSAGE_REGION_LOGIN_FAILURE));
   }
 
   /**

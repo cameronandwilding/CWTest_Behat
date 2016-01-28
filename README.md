@@ -75,7 +75,7 @@ or
 
 Test Results
 ============
-The results of all tests will be stored in `[LOCAL DRUPAL INSTALL FOLDER]/Results/Twig_***.html`
+The results of all tests will be stored in `[LOCAL DRUPAL INSTALL FOLDER]/Results/Behat/Twig_***.html`
 
 
 Test Scripting
