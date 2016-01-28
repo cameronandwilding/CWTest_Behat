@@ -68,7 +68,7 @@ class LoginPage extends Page {
   /**
    * Gets a field.
    *
-   * @param $field
+   * @param string $field
    *   A specific field.
    *
    * @return string
