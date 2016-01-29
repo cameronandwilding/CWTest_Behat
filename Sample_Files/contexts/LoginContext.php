@@ -14,6 +14,8 @@ class LoginContext extends PageContext  {
   //  Buttons.
   const BUTTON_LOGIN = 'LOG_IN';
 
+  //  Regions.
+  const REGION_LOGIN_FAILURE = 'LOGIN_FAILURE';
 
   /**
    * LoginPage instance.
@@ -114,8 +116,8 @@ class LoginContext extends PageContext  {
    * @Given I should see the login failure message
    */
   public function iShouldSeeTheLoginFailureMessage() {
-    $this->helper_context->iCanSeeInTheRegion('Unrecognized username or password.', $this->login_page->getMessageRegion('LOGIN_FAILURE'));
-    $this->helper_context->iCanSeeInTheRegion('Have you forgotten your password?', $this->login_page->getMessageRegion('LOGIN_FAILURE'));
+    $this->helper_context->iCanSeeInTheRegion('Unrecognized username or password.', $this->login_page->getMessageRegion(self::REGION_LOGIN_FAILURE));
+    $this->helper_context->iCanSeeInTheRegion('Have you forgotten your password?', $this->login_page->getMessageRegion(self::REGION_LOGIN_FAILURE));
   }
 
   /**

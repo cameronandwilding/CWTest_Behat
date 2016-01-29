@@ -19,6 +19,9 @@ class ArticleContext extends PageContext {
   const BUTTON_SAVE_AND_PUBLISH = 'SAVE_AND_PUBLISH';
   const BUTTON_SAVE_AND_KEEP_PUBLISHED = 'SAVE_AND_KEEP_PUBLISHED';
 
+  //  Regions.
+  const REGION_SUCCESS_MESSAGE = 'SUCCESS_MESSAGE_REGION';
+
   /**
    * ArticlePage instance.
    * @var ArticlePage
@@ -261,7 +264,7 @@ class ArticleContext extends PageContext {
    * @Given I verify that the article was created successfully
    */
   public function iVerifyThatTheArticleWasCreatedSuccessfully() {
-    $this->helper_context->iCanSeeInTheRegion('Article ' . $this->article_page_title . ' has been created.', $this->article_page->getMessageRegion('SUCCESS_MESSAGE_REGION'));
+    $this->helper_context->iCanSeeInTheRegion('Article ' . $this->article_page_title . ' has been created.', $this->article_page->getMessageRegion(self::REGION_SUCCESS_MESSAGE));
     $this->article_node_id = $this->helper_context->getNodeIDFromEDITLink();
   }
 
@@ -269,14 +272,14 @@ class ArticleContext extends PageContext {
    * @Given I verify that the article was edited successfully
    */
   public function iVerifyThatTheArticleWasEditedSuccessfully() {
-    $this->helper_context->iCanSeeInTheRegion('Article ' . $this->article_page_title . ' has been updated.', $this->article_page->getMessageRegion('SUCCESS_MESSAGE_REGION'));
+    $this->helper_context->iCanSeeInTheRegion('Article ' . $this->article_page_title . ' has been updated.', $this->article_page->getMessageRegion(self::REGION_SUCCESS_MESSAGE));
   }
 
   /**
    * @Given I verify that the article was deleted successfully
    */
   public function iVerifyThatTheArticleWasDeletedSuccessfully() {
-    $this->helper_context->iCanSeeInTheRegion('The Article ' . $this->article_page_title . ' has been deleted.', $this->article_page->getMessageRegion('SUCCESS_MESSAGE_REGION'));
+    $this->helper_context->iCanSeeInTheRegion('The Article ' . $this->article_page_title . ' has been deleted.', $this->article_page->getMessageRegion(self::REGION_SUCCESS_MESSAGE));
   }
 
   /**
