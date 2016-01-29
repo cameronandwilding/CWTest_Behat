@@ -1,5 +1,10 @@
 <?php
 
+/**
+ *@file
+ * Class PageContext implements the behavior for general pages.
+ */
+
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use PHPUnit_Framework_Assert as Assertions;
@@ -12,6 +17,7 @@ class PageContext implements Context {
   public $helper_context;
 
   /**
+   * Page instance.
    * @var Page
    */
   private $page;
@@ -28,7 +34,7 @@ class PageContext implements Context {
    *
    * Allow access to the HelperContext.
    */
-  public function gather_contexts(BeforeScenarioScope $scope) {
+  public function gatherContexts(BeforeScenarioScope $scope) {
     $environment = $scope->getEnvironment();
     $this->helper_context = $environment->getContext('HelperContext');
   }
@@ -37,7 +43,7 @@ class PageContext implements Context {
    * Verify the fields displayed on the screen.
    * @param $fields
    */
-  protected function verify_fields($fields) {
+  protected function verifyFields($fields) {
     foreach ($fields as $field) {
       Assertions::assertTrue($this->helper_context->getSession()
         ->getPage()
@@ -49,7 +55,7 @@ class PageContext implements Context {
    * Verify the frames displayed on the screen.
    * @param $frames
    */
-  protected function verify_frames($frames) {
+  protected function verifyFrames($frames) {
     foreach ($frames as $frame) {
       Assertions::assertTrue($this->helper_context->hasFrame($frame), $frame . ' frame not found');
     }
@@ -59,7 +65,7 @@ class PageContext implements Context {
    * Verify the buttons displayed on the screen.
    * @param $buttons
    */
-  protected function verify_buttons($buttons) {
+  protected function verifyButtons($buttons) {
     foreach ($buttons as $button) {
       Assertions::assertTrue($this->helper_context->getSession()
         ->getPage()
@@ -71,7 +77,7 @@ class PageContext implements Context {
    * Verify the regions displayed on the screen.
    * @param $regions
    */
-  protected function verify_regions($regions) {
+  protected function verifyRegions($regions) {
     foreach ($regions as $region) {
       $this->helper_context->minkContext->assertElementOnPage($region);
     }
@@ -81,7 +87,7 @@ class PageContext implements Context {
    * Verify the links displayed on the screen.
    * @param $links
    */
-  protected function verify_links($links) {
+  protected function verifyLinks($links) {
     foreach ($links as $link) {
       Assertions::assertTrue($this->helper_context->getSession()
         ->getPage()
@@ -92,17 +98,17 @@ class PageContext implements Context {
   /**
    * Verify the header.
    */
-  protected function verify_header() {
-    $header_regions = $this->page->get_all_header_regions();
-    self::verify_regions($header_regions);
+  protected function verifyHeader() {
+    $header_regions = $this->page->getAllHeaderRegions();
+    self::verifyRegions($header_regions);
   }
 
   /**
    * Verify the footer.
    */
-  protected function verify_footer() {
-    $footer_regions = $this->page->get_all_header_regions();
-    self::verify_regions($footer_regions);
+  protected function verifyFooter() {
+    $footer_regions = $this->page->getAllHeaderRegions();
+    self::verifyRegions($footer_regions);
   }
 }
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Class ArticlePage describes the objects on the article page.
+ */
+
 class ArticlePage {
 
   /**
@@ -81,130 +86,146 @@ class ArticlePage {
   );
 
   /**
-   * The path to the Article Content type.
+   * Gets the path.
+   *
    * @return string
    */
-  public function get_path() {
+  public function getPath() {
     return $this->path;
   }
 
   /**
-   * All fields.
+   * Gets all fields.
+   *
    * @return array
    */
-  public function get_all_fields() {
+  public function getAllFields() {
     return $this->fields;
   }
 
   /**
-   * A specific field.
+   * Gets a specific field.
+   *
    * @return string
    */
-  public function get_field($field) {
+  public function getField($field) {
     return $this->fields[$field];
   }
 
   /**
-   * All hidden fields.
+   * Gets all hidden fields.
+   *
    * @return array
    */
-  public function get_all_hidden_fields() {
+  public function getAllHiddenFields() {
     return $this->hidden_fields;
   }
 
   /**
-   * A specific hidden field.
+   * Gets a specific hidden field.
+   *
    * @return string
    */
-  public function get_hidden_field($hidden_field) {
+  public function getHiddenField($hidden_field) {
     return $this->hidden_fields[$hidden_field];
   }
 
   /**
-   * All create buttons.
+   * Gets all create buttons.
+   *
    * @return array
    */
-  public function get_all_create_buttons() {
+  public function getAllCreateButtons() {
     return $this->create_buttons;
   }
 
   /**
-   * A specific create button.
+   * Gets a specific create button.
+   *
    * @return string
    */
-  public function get_create_button($button) {
+  public function getCreateButton($button) {
     return $this->create_buttons[$button];
   }
 
   /**
-   * All edit buttons.
+   * Gets all edit buttons.
+   *
    * @return array
    */
-  public function get_all_edit_buttons() {
+  public function getAllEditButtons() {
     return $this->edit_buttons;
   }
 
   /**
-   * A specific create button.
+   * Gets a specific create button.
+   *
    * @return string
    */
-  public function get_edit_button($button) {
+  public function getEditButton($button) {
     return $this->edit_buttons[$button];
   }
 
   /**
-   * A specific edit link.
+   * Gets a specific edit link.
+   *
    * @return string
    */
-  public function get_edit_link($link) {
+  public function getEditLink($link) {
     return $this->edit_links[$link];
   }
 
   /**
-   * All edit links.
+   * Gets all edit links.
+   *
    * @return array
    */
-  public function get_all_edit_links() {
+  public function getAllEditLinks() {
     return $this->edit_links;
   }
 
   /**
-   * All regions.
+   * Gets all regions.
+   *
    * @return array
    */
-  public function get_all_regions() {
+  public function getAllRegions() {
     return $this->regions;
   }
 
   /**
-   * A specific region.
+   * Gets a specific region.
+   *
    * @return string
    */
-  public function get_region($region) {
+  public function getRegion($region) {
     return $this->regions[$region];
   }
 
   /**
-   * A specific message region.
+   * Gets a specific message region.
+   *
    * @return string
    */
-  public function get_message_region($region) {
+  public function getMessageRegion($region) {
     return $this->message_regions[$region];
   }
 
   /**
-   * All frames.
+   * Gets all frames.
+   *
    * @return array
    */
-  public function get_all_frames() {
+  public function getAllFrames() {
     return $this->frames;
   }
 
   /**
-   * A specific frame.
+   * Gets a specific frame.
+   *
    * @return string
    */
-  public function get_frame($frame) {
+  public function getFrame($frame) {
     return $this->frames[$frame];
   }
 }
