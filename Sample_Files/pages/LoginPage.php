@@ -56,7 +56,7 @@ class LoginPage extends Page {
   }
 
   /**
-   * All fields.
+   * Gets all fields.
    *
    * @return array
    */
