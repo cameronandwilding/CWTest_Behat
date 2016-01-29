@@ -47,6 +47,9 @@ class MyAccountPage {
   /**
    * Gets a specific field.
    *
+   * @param string $field
+   *   The field.
+   *
    * @return string
    */
   public function getField($field) {
@@ -64,6 +67,9 @@ class MyAccountPage {
 
   /**
    * Gets a specific region.
+   *
+   * @param string $region
+   *   The region.
    *
    * @return string
    */

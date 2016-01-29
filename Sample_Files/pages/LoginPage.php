@@ -9,12 +9,14 @@ class LoginPage extends Page {
 
   /**
    * The path to the Login page.
+   *
    * @var string $path
    */
   private $path = '/user/login';
 
   /**
    * Fields visible on Login screen.
+   *
    * @var array $fields
    */
   private $fields = array(
@@ -24,6 +26,7 @@ class LoginPage extends Page {
 
   /**
    * Buttons visible on Login screen.
+   *
    * @var array $buttons
    */
   private $buttons = array(
@@ -32,6 +35,7 @@ class LoginPage extends Page {
 
   /**
    * Regions visible on Login screen.
+   *
    * @var array $regions
    */
   private $regions = array(
@@ -40,6 +44,7 @@ class LoginPage extends Page {
 
   /**
    * Message regions visible on Login screen.
+   *
    * @var array $message_regions
    */
   private $message_regions = array(
@@ -67,6 +72,9 @@ class LoginPage extends Page {
   /**
    * Gets a specific field.
    *
+   * @param string $field
+   *   The field.
+   *
    * @return string
    */
   public function getField($field) {
@@ -84,6 +92,9 @@ class LoginPage extends Page {
 
   /**
    * Gets a specific button.
+   *
+   * @param string $button
+   *   The button.
    *
    * @return string
    */
@@ -103,6 +114,9 @@ class LoginPage extends Page {
   /**
    * Gets a region.
    *
+   * @param string $region
+   *   The region.
+   *
    * @return string
    */
   public function getRegion($region) {
@@ -111,6 +125,9 @@ class LoginPage extends Page {
 
   /**
    * Gets a specific message region.
+   *
+   * @param string $region
+   *   The region
    *
    * @return string
    */
