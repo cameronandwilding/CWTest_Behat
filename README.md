@@ -1,22 +1,22 @@
 SETUP & EXECUTION 
 =================
 
-Select a location for the framework
-===================================
+1. Select a location for the framework
+======================================
 Create a folder, ideally inside your Drupal project root.
 
 
 
-Get the framework
-=================
-In terminal, open the above folder and type:<br><br>
+2. Get the framework
+====================
+In terminal, open the above folder and type:<br>
 ```
 composer require cw_test/behat_framework
 ``` 
 
     
-Install the framework
-===================
+3. Install the framework
+========================
 Run the bootstrap shell script:<br>
 ```
 cd vendor/cw_test/behat_framework && ./bootstrap.sh
@@ -27,8 +27,8 @@ Inside `vendor/cw_test/behat_framework/Behat/behat.local.yml`, update:<br>
 * the `drupal_root` value to the path to your local drupal installation.
        
 
-Optional Step
-=============
+3a. Optional Step
+=================
 This is only required if you want to run tests on Chrome.<br>
 (By default, Firefox works out-of-the-box.)
 
@@ -36,8 +36,8 @@ This is only required if you want to run tests on Chrome.<br>
 2. Save it to `/usr/local/bin`
 
 
-Verify Setup Successful
-=======================
+4. Verify Setup Successful
+==========================
 Navigate to:
 
 ```
@@ -53,8 +53,8 @@ Execute the following:
 You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
-Test Execution
-==============
+5. Test Execution
+=================
 Navigate to:
 
 ```
@@ -73,13 +73,13 @@ or
 ./run-behat.sh regression chrome
 ```
 
-Test Results
-============
-The results of all tests will be stored in `[LOCAL DRUPAL INSTALL FOLDER]/Results/Twig_***.html`
+6. Test Results
+===============
+The results of all tests will be stored in `[LOCAL DRUPAL INSTALL FOLDER]/Results/Behat/Twig_***.html`
 
 
-Test Scripting
-==============
+7. Test Scripting
+=================
 There are 3 parts to creating every new test:
 
  * create/update the XXXX scenario in a .feature file
