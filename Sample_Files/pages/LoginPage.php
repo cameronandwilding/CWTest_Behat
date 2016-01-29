@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Class LoginPage describes the objects on the login page.
+ */
+
 class LoginPage extends Page {
 
   /**
@@ -42,66 +47,74 @@ class LoginPage extends Page {
   );
 
   /**
-   * The path.
+   * Gets the path.
+   *
    * @return string
    */
-  public function get_path() {
+  public function getPath() {
     return $this->path;
   }
 
   /**
-   * All fields.
+   * Gets all fields.
+   *
    * @return array
    */
-  public function get_all_fields() {
+  public function getAllFields() {
     return $this->fields;
   }
 
   /**
-   * A specific field.
+   * Gets a specific field.
+   *
    * @return string
    */
-  public function get_field($field) {
+  public function getField($field) {
     return $this->fields[$field];
   }
 
   /**
-   * All buttons.
+   * Gets all buttons.
+   *
    * @return array
    */
-  public function get_all_buttons() {
+  public function getAllButtons() {
     return $this->buttons;
   }
 
   /**
-   * A specific button.
+   * Gets a specific button.
+   *
    * @return string
    */
-  public function get_button($button) {
+  public function getButton($button) {
     return $this->buttons[$button];
   }
 
   /**
-   * All regions.
+   * Gets all regions.
+   *
    * @return array
    */
-  public function get_all_regions() {
+  public function getAllRegions() {
     return $this->regions;
   }
 
   /**
-   * A specific region.
+   * Gets a region.
+   *
    * @return string
    */
-  public function get_region($region) {
+  public function getRegion($region) {
     return $this->regions[$region];
   }
 
   /**
-   * A specific message region.
+   * Gets a specific message region.
+   *
    * @return string
    */
-  public function get_message_region($region) {
+  public function getMessageRegion($region) {
     return $this->message_regions[$region];
   }
 }

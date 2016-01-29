@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Class MyAccountPage describes the objects on the my account page.
+ */
+
 class MyAccountPage {
   /**
    * @var string $path
@@ -22,41 +27,47 @@ class MyAccountPage {
   );
 
   /**
-   * The path.
+   * Gets the path.
+   *
    * @return string
    */
-  public function get_path() {
+  public function getPath() {
     return $this->path;
   }
 
   /**
-   * All fields.
+   * Gets all fields.
+   *
    * @return array
    */
-  public function get_all_fields() {
+  public function getAllFields() {
     return $this->fields;
   }
 
   /**
-   * A specific field.
+   * Gets a specific field.
+   *
    * @return string
    */
-  public function get_field($field) {
+  public function getField($field) {
     return $this->fields[$field];
   }
 
-  /** All regions.
+  /**
+   * Gets all regions.
+   *
    * @return array
    */
-  public function get_all_regions() {
+  public function getAllRegions() {
     return $this->regions;
   }
 
   /**
-   * A specific region.
+   * Gets a specific region.
+   *
    * @return string
    */
-  public function get_region($region) {
+  public function getRegion($region) {
     return $this->regions[$region];
   }
 }

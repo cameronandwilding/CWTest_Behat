@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Class Page describes the objects on general pages.
+ */
+
 class Page {
 
   /**
@@ -26,34 +31,38 @@ class Page {
   );
 
   /**
-   * All header regions.
+   * Gets all header regions.
+   *
    * @return array
    */
-  public function get_all_header_regions() {
+  public function getAllHeaderRegions() {
     return $this->header_regions;
   }
 
   /**
-   * A specific header region.
+   * Gets a specific header region.
+   *
    * @return string
    */
-  public function get_header_region($region) {
+  public function getHeaderRegion($region) {
     return $this->header_regions[$region];
   }
 
   /**
-   * All footer regions.
+   * Gets all footer regions.
+   *
    * @return array
    */
-  public function get_all_footer_fields() {
+  public function getAllFooterFields() {
     return $this->footer_regions;
   }
 
   /**
-   * A specific footer region.
+   * Gets a specific footer region.
+   *
    * @return string
    */
-  public function get_footer_region($region) {
+  public function getFooterRegion($region) {
     return $this->footer_regions[$region];
   }
 }
