@@ -19,6 +19,7 @@ class LoginContext extends PageContext  {
 
   /**
    * LoginPage instance.
+   *
    * @var LoginPage
    */
   private $login_page;
