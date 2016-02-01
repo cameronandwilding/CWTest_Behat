@@ -11,7 +11,7 @@ Create a folder, ideally inside your Drupal project root.
 ====================
 In terminal, open the above folder and type:<br>
 ```
-composer require cw_test/behat_framework
+composer require cw_test/behat_framework=dev-master
 ``` 
 
     
