@@ -1,7 +1,7 @@
 <?php
 
 /**
- *@file
+ * @file
  * Class ArticleContext implements the behavior for article pages.
  */
 
@@ -24,16 +24,21 @@ class ArticleContext extends PageContext {
 
   /**
    * ArticlePage instance.
+   *
    * @var ArticlePage
    */
   private $article_page;
 
   /**
+   * Article page title.
+   *
    * @var $string
    */
   private $article_page_title;
 
   /**
+   * Article node id.
+   *
    * @var $integer
    */
   private $article_node_id;
@@ -47,17 +52,21 @@ class ArticleContext extends PageContext {
   }
 
   /**
+   * Fills in the title field.
+   *
    * @param string $title
    */
   private function fillTitleField($title) {
     $this->helper_context->iFillInFieldByIDWith($this->article_page->getField(self::FIELD_TITLE), $title);
     $this->article_page_title = $this->helper_context->getSession()
       ->getPage()
-      ->findById($this->article_page->getField('TITLE'))
+      ->findById($this->article_page->getField(self::FIELD_TITLE))
       ->getValue();
   }
 
   /**
+   * Fills in the body frame.
+   *
    * @param string $body
    */
   private function fillBodyFrame($body) {
@@ -65,6 +74,8 @@ class ArticleContext extends PageContext {
   }
 
   /**
+   * Attaches image.
+   *
    * @param string $image
    */
   private function attachImage($image) {
@@ -73,6 +84,8 @@ class ArticleContext extends PageContext {
   }
 
   /**
+   * Fills the alt field.
+   *
    * @param string $alt
    */
   private function fillAltField($alt) {
@@ -94,13 +107,11 @@ class ArticleContext extends PageContext {
   public function iPressSaveAndKeepPublished() {
     $this->helper_context->getSession()
       ->getPage()
-      ->pressButton($this->article_page->getEditButton('SAVE_AND_KEEP_PUBLISHED'));
+      ->pressButton($this->article_page->getEditButton(self::BUTTON_SAVE_AND_KEEP_PUBLISHED));
   }
 
   /**
    * @Given I complete the Create Article page with generic valid data
-   *
-   * @param string $username , $password
    */
   public function fillInArticleContentWithGenericValidData() {
     self::fillTitleField('Article Title <alpha>');
@@ -191,16 +202,16 @@ class ArticleContext extends PageContext {
       $value = trim($value['VALUE']);
 
       switch ($field) {
-        case 'TITLE':
+        case self::FIELD_TITLE:
           self::fillTitleField($value);
           break;
-        case 'BODY':
+        case self::FIELD_BODY:
           self::fillBodyFrame($value);
           break;
-        case 'IMAGE':
+        case self::FIELD_IMAGE:
           self::attachImage($value);
           break;
-        case 'ALT':
+        case self::FIELD_ALT:
           self::fillAltField($value);
           break;
         default:
@@ -236,16 +247,16 @@ class ArticleContext extends PageContext {
       $field = trim($value['FIELD']);
       $value = trim($value['VALUE']);
 
-      if ($field == 'TITLE') {
+      if ($field == self::FIELD_TITLE) {
         $this->helper_context->iCanSeeInTheRegion($this->article_page_title, $this->article_page->getRegion('VIEW_TITLE'));
       }
-      if ($field == 'BODY') {
+      if ($field == self::FIELD_BODY) {
         $this->helper_context->iCanSeeInTheRegion($value, $this->article_page->getRegion('VIEW_BODY'));
       }
-      if ($field == 'IMAGE') {
+      if ($field == self::FIELD_IMAGE) {
         $this->helper_context->minkContext->assertElementOnPage($this->article_page->getRegion('VIEW_IMAGE'));
       }
-      if ($field == 'ALT') {
+      if ($field == self::FIELD_ALT) {
         $this->helper_context->iCanSeeTheValueInTheHTML($value);
       }
     }
