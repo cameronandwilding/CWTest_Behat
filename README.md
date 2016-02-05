@@ -1,4 +1,4 @@
-SETUP & EXECUTION
+SETUP & EXECUTION 
 =================
 
 1. Select a location for the framework
@@ -13,7 +13,6 @@ In terminal, open the above folder and type:<br>
 ```
 composer require cw_test/behat_framework=dev-master
 ```
-
 
 3. Install the framework
 ========================
@@ -158,3 +157,4 @@ https://github.com/composer/composer/blob/master/doc/articles/troubleshooting.md
 
 3. If you get errors related to timezone settings, add the following to your path profile (with the appropriate version of PHP):<br>
 `export PATH="/Applications/MAMP/bin/php/php5.6.7/bin:$PATH"`
+
