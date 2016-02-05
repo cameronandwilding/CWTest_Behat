@@ -42,6 +42,9 @@ class Page {
   /**
    * Gets a specific header region.
    *
+   * @param string $region
+   *   The region.
+   *
    * @return string
    */
   public function getHeaderRegion($region) {
@@ -59,6 +62,9 @@ class Page {
 
   /**
    * Gets a specific footer region.
+   *
+   * @param string $region
+   *   The region.
    *
    * @return string
    */

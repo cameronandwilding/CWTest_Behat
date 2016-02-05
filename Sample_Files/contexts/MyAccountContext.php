@@ -13,6 +13,7 @@ class MyAccountContext extends PageContext {
 
   /**
    * MyAccountPage instance.
+   *
    * @var MyAccountPage
    */
   private $my_account_page;

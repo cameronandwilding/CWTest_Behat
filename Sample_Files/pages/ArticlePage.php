@@ -9,12 +9,14 @@ class ArticlePage {
 
   /**
    * The path to the Article Content Type.
+   *
    * @var string $path
    */
   private $path = '/node/add/article';
 
   /**
    * Fields visble in Create and Edit mode.
+   *
    * @var array $fields
    */
   private $fields = array(
@@ -24,6 +26,7 @@ class ArticlePage {
 
   /**
    * Fields hidden in Create and Edit mode.
+   *
    * @var array $hidden_fields
    */
   private $hidden_fields = array(
@@ -32,6 +35,7 @@ class ArticlePage {
 
   /**
    * Frames available in Create and Edit mode.
+   *
    * @var array $frames
    */
   private $frames = array(
@@ -40,6 +44,7 @@ class ArticlePage {
 
   /**
    * Buttons visible in Create mode.
+   *
    * @var array $create_buttons
    */
   private $create_buttons = array(
@@ -50,6 +55,7 @@ class ArticlePage {
 
   /**
    * Buttons visible in Edit mode.
+   *
    * @var array $edit_buttons
    */
   private $edit_buttons = array(
@@ -61,6 +67,7 @@ class ArticlePage {
 
   /**
    * Links visible in Edit mode.
+   *
    * @var array $edit_buttons
    */
   private $edit_links = array(
@@ -69,6 +76,7 @@ class ArticlePage {
 
   /**
    * Content regions visible in View mode.
+   *
    * @var array $view_regions
    */
   private $regions = array(
@@ -79,6 +87,7 @@ class ArticlePage {
 
   /**
    * Message regions in View mode.
+   *
    * @var array $message_regions
    */
   private $message_regions = array(
@@ -106,6 +115,9 @@ class ArticlePage {
   /**
    * Gets a specific field.
    *
+   * @param string $field
+   *   The field.
+   *
    * @return string
    */
   public function getField($field) {
@@ -123,6 +135,9 @@ class ArticlePage {
 
   /**
    * Gets a specific hidden field.
+   *
+   * @param string $hidden_field
+   *   The hidden field.
    *
    * @return string
    */
@@ -142,6 +157,9 @@ class ArticlePage {
   /**
    * Gets a specific create button.
    *
+   * @param string $button
+   *   The button.
+   *
    * @return string
    */
   public function getCreateButton($button) {
@@ -160,6 +178,9 @@ class ArticlePage {
   /**
    * Gets a specific create button.
    *
+   * @param string $button
+   *   The button.
+   *
    * @return string
    */
   public function getEditButton($button) {
@@ -168,6 +189,9 @@ class ArticlePage {
 
   /**
    * Gets a specific edit link.
+   *
+   * @param string $link
+   *   The link.
    *
    * @return string
    */
@@ -196,6 +220,9 @@ class ArticlePage {
   /**
    * Gets a specific region.
    *
+   * @param string $region
+   *   The region.
+   *
    * @return string
    */
   public function getRegion($region) {
@@ -204,6 +231,9 @@ class ArticlePage {
 
   /**
    * Gets a specific message region.
+   *
+   * @param string $region
+   *   The region.
    *
    * @return string
    */
@@ -222,6 +252,9 @@ class ArticlePage {
 
   /**
    * Gets a specific frame.
+   *
+   * @param string $frame
+   *   The frame.
    *
    * @return string
    */
