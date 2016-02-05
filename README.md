@@ -11,10 +11,10 @@ Create a folder, ideally inside your Drupal project root.
 ====================
 In terminal, open the above folder and type:<br>
 ```
-composer require cw_test/behat_framework
-``` 
+composer require cw_test/behat_framework=dev-master
+```
 
-    
+
 3. Install the framework
 ========================
 Run the bootstrap shell script:<br>
@@ -25,7 +25,7 @@ cd vendor/cw_test/behat_framework && ./bootstrap.sh
 Inside `vendor/cw_test/behat_framework/Behat/behat.local.yml`, update:<br>
 * the `base_url` to your local site url<br>
 * the `drupal_root` value to the path to your local drupal installation.
-       
+
 
 3a. Optional Step
 =================
@@ -61,7 +61,7 @@ Navigate to:
 [LOCAL DRUPAL INSTALL FOLDER]/Behat
 ```
 
-To execute the tests, select one of the following options based on the format `./run-behat.sh [tag] [profile]`:
+To execute all of the tests, select one of the following options based on the format `./run-behat.sh [tag] [profile]`:
 
 ```
 ./run-behat.sh regression firefox
@@ -78,61 +78,73 @@ or
 The results of all tests will be stored in `[LOCAL DRUPAL INSTALL FOLDER]/Results/Behat/Twig_***.html`
 
 
-7. Test Scripting
-=================
-There are 3 parts to creating every new test:
+BEHAT TEST WRITING PROCESS
+==========================
 
- * create/update the XXXX scenario in a .feature file
- * create/update the XXXX Page.php file 
- * create/update the XXXX Context.php file,
- 
-where XXXX is the name of the page being tested, e.g. Basic, Article, Login, etc.
-
-`It is a good idea to read through the LOGIN feature, page, and context files while reading through the following descriptions.`
- 
-<u>FEATURE file</u><br>
-This file contains the high-level test scenarios written in a Gherkin syntax.<br>
-For example, in the `LoginPage.feature`, there are tests to ensure a vaild login is successful.<br>
-These files are located in Project_Files/features/.<br>
-They all follow the structure ****/****.feature, where **** is the name of the page being tested.<br>
-
-<u>PAGE.php file</u><br>
-This file contains the path, page objects, and getters/setters for all the fields on the page XXXX.<br>
-For example, in the `LoginPage.php`, there are the username, password, and login button objects detailed.<br>
-These files are located in Project_Files/pages/.<br>
-They all follow the structure XXXXPage.php, where XXXX is the name of the page being tested.<br>
-
-<u>CONTEXT.php file</u><br>
-This file contains all of the functions that are specific to the XXXX page.<br>
-For example, in the `LoginContext.php`, there is are functions to fill in the username and password fields, and press the login button.<br>
-These files are located in Project_Files/contexts.<br>
-They all follow the structure XXXXContext.php, where XXXX is the name of the page being tested.<br>
-
-
-If you are creating a test for a page that has not previously been automated, then you will need to create all 3 of the files listed above.<br>
-If you are creating or updating a test for a page that has previously been automated, then all three of the above files will already exist. In this case, it will require updating these existing files.<br>
+It is a good idea to read through the LOGIN feature, page, and context files while reading through the following descriptions.<br>
+In the following, **** is the name of the page being tested, e.g. Basic, Article, Login, etc.<br>
+<b>"ACTION"</b> indicates a step that you have to do.
 
 The basic process for writing any test would be:
 
-1. Decide what the business scenario is that you would like to test.
-2. Write it down in a `.feature` file.
-3. Once a new sentence has been created, the objects required for it will need to be added to the `XXXXPage.php` file.
-4. Once the objects have been added, the relevant functions will need to be created in the `XXXXContext.php` file.
+<u>1. SCENARIOS</u><br>
+Decide on a business scenario that you would like to automate. <br>
+This often comes from a User Story or piece of functionality that you'd like to test.<br>
+For the rest of the following, let's think of a login scenario where a user is going:<br>
+ - open the login page<br>
+ - enter a username and password.<br>
+ - click the login button.<br>
 
+<u>2. FEATURE file</u><br>
+This file contains the high-level test scenarios written in a Gherkin syntax.<br>
+These files are located in Project_Files/features/.<br>
+They all follow the naming convention ****.feature.<br>
+For example, in the `LoginPage.feature`, there are tests to ensure a valid login is successful.<br>
 
-<u>Points abouts the `FEATURE` file</u><br>
+<b>ACTION:</b> Create a `.feature` file, using the template provided, and write your scenario into the `.feature` file.<br>
 Follow the syntax used in other tests.<br>
 Where possible, re-use existing sentences from the `.feature` file as these will already have been automated.<br>
 If you are creating a new sentence, keep it short but descriptive.<br>
+ * template - `/ProjectFiles/features/LoginPage.feature`<br>
+ * reference - <a href="http://docs.behat.org/en/v3.0/guides/1.gherkin.html">Gherkin</a><br>
 
+<u>3. PAGE.php file</u><br>
+This file contains the path, page objects, and getters/setters for all the fields on the page ****.<br>
+These files are located in Project_Files/pages/.<br>
+They all follow the naming convention ****Page.php.<br>
+For example, in the `LoginPage.php`, there are the username, password, and login button objects detailed.<br>
 
-<u>Points abouts the `PAGE` file</u><br>
-Follow the syntax and naming conventions from other PAGE files.<br>
-Group obejcts by type, like input fields, buttons, iframes.<br>
+<b>ACTION:</b> Create a `Page.php` file, and add the objects  to it.<br>
+For Create/Edit/View content types, you generally want to add every object that an end-user would use to the `****Page.php` file.<br>
+Using the template provided, create your `****Page.php` file. <br>
+Take care to separate textfields, buttons, frames, etc, and follow the syntax and naming conventions from other PAGE files.<br>
+Where possible, always use IDs for your objects. If IDs are not available, consider using name, data-drupal-selector, or xpath.<br>
+ * template - `/ProjectFiles/pages/ArticlePage.php`<br>
 
-<u>Points abouts the `CONTEXT` file</u><br>
+<u>4. CONTEXT.php file</u><br>
+This file contains all of the functions that are specific to the **** page.<br>
+These files are located in Project_Files/contexts.<br>
+They all follow the naming convention ****Context.php.<br>
+For example, in the `LoginContext.php`, there are functions to fill in the username and password fields, and press the login button.<br>
+
+<b>ACTION:</b> Create a `****Context.php` file, and add the relevant functions to interact with the objects from the `Page.php` file.<br>
+This file will detail function for interacting with your objects.<br>
+The number of functions you write will vary from context to context - typically, the more complicated a UI is, the more functions will be required.<br>
 Follow the syntax and naming conventions from other CONTEXT files.<br>
 Keep all functions as short as possible, ideally doing one thing each, like filling in a text field.<br>
+ * template - `/ProjectFiles/contexts/ArticleContext.php`<br>
+ * reference - <a href="http://docs.behat.org/en/v3.0/guides/2.definitions.html">Step definitions</a><br>
+ * reference - <a href="http://docs.behat.org/en/v3.0/guides/3.hooks.html">Hooks</a><br>
+ * reference - <a href="http://docs.behat.org/en/v3.0/guides/4.contexts.html">Contexts</a><br>
+
+<u>5. behat.yml file</u><br>
+This file contains most of the configuration settings that are required for behat to run.<br>
+Every new feature file that gets created will require that a new entry is made to this file.<br>
+
+<b>ACTION:</b> Follow the example of the `login` from lines 3-15. Copy and paste this inside the `default` profile, and update the `login` values with the correct values.<br>
+ * file - `/ProjectFiles/behat.yml`<br>
+ * reference - <a href="http://docs.behat.org/en/v3.0/guides/5.suites.html">Suites</a><br>
+ * reference - <a href="http://docs.behat.org/en/v3.0/guides/6.profiles.html">Profiles</a><br>
 
 
 
@@ -143,3 +155,8 @@ https://github.com/composer/composer/blob/master/doc/articles/troubleshooting.md
 
 2. If you get the folowing when running the tests, please upgrade your version of java:<br>
 `Exception in thread "main" java.lang.UnsupportedClassVersionError: org/openqa/grid/selenium/GridLauncher : Unsupported major.minor version 51.0`
+
+3. If you get errors related to timezone settings, add the following to your path profile (with the appropriate version of PHP):<br>
+```
+export PATH="/Applications/MAMP/bin/php/php5.6.7/bin:$PATH"
+```
