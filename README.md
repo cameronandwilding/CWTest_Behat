@@ -157,6 +157,4 @@ https://github.com/composer/composer/blob/master/doc/articles/troubleshooting.md
 `Exception in thread "main" java.lang.UnsupportedClassVersionError: org/openqa/grid/selenium/GridLauncher : Unsupported major.minor version 51.0`
 
 3. If you get errors related to timezone settings, add the following to your path profile (with the appropriate version of PHP):<br>
-```
-export PATH="/Applications/MAMP/bin/php/php5.6.7/bin:$PATH"
-```
+`export PATH="/Applications/MAMP/bin/php/php5.6.7/bin:$PATH"`
