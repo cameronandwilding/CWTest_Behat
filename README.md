@@ -82,7 +82,7 @@ BEHAT TEST WRITING PROCESS
 ==========================
 
 It is a good idea to read through the LOGIN feature, page, and context files while reading through the following descriptions.<br>
-In the following, **** is the name of the page being tested, e.g. Basic, Article, Login, etc.<br>
+In the following, XXXX is the name of the page being tested, e.g. Basic, Article, Login, etc.<br>
 <b>"ACTION"</b> indicates a step that you have to do.
 
 The basic process for writing any test would be:
@@ -98,7 +98,7 @@ For the rest of the following, let's think of a login scenario where a user is g
 <u>2. FEATURE file</u><br>
 This file contains the high-level test scenarios written in a Gherkin syntax.<br>
 These files are located in Project_Files/features/.<br>
-They all follow the naming convention ****.feature.<br>
+They all follow the naming convention XXXX.feature.<br>
 For example, in the `LoginPage.feature`, there are tests to ensure a valid login is successful.<br>
 
 <b>ACTION:</b> Create a `.feature` file, using the template provided, and write your scenario into the `.feature` file.<br>
@@ -109,25 +109,25 @@ If you are creating a new sentence, keep it short but descriptive.<br>
  * reference - <a href="http://docs.behat.org/en/v3.0/guides/1.gherkin.html">Gherkin</a><br>
 
 <u>3. PAGE.php file</u><br>
-This file contains the path, page objects, and getters/setters for all the fields on the page ****.<br>
+This file contains the path, page objects, and getters/setters for all the fields on the page XXXX.<br>
 These files are located in Project_Files/pages/.<br>
-They all follow the naming convention ****Page.php.<br>
+They all follow the naming convention XXXXPage.php.<br>
 For example, in the `LoginPage.php`, there are the username, password, and login button objects detailed.<br>
 
 <b>ACTION:</b> Create a `Page.php` file, and add the objects  to it.<br>
-For Create/Edit/View content types, you generally want to add every object that an end-user would use to the `****Page.php` file.<br>
-Using the template provided, create your `****Page.php` file. <br>
+For Create/Edit/View content types, you generally want to add every object that an end-user would use to the `XXXXPage.php` file.<br>
+Using the template provided, create your `XXXXPage.php` file. <br>
 Take care to separate textfields, buttons, frames, etc, and follow the syntax and naming conventions from other PAGE files.<br>
 Where possible, always use IDs for your objects. If IDs are not available, consider using name, data-drupal-selector, or xpath.<br>
  * template - `/ProjectFiles/pages/ArticlePage.php`<br>
 
 <u>4. CONTEXT.php file</u><br>
-This file contains all of the functions that are specific to the **** page.<br>
+This file contains all of the functions that are specific to the XXXX page.<br>
 These files are located in Project_Files/contexts.<br>
-They all follow the naming convention ****Context.php.<br>
+They all follow the naming convention XXXXContext.php.<br>
 For example, in the `LoginContext.php`, there are functions to fill in the username and password fields, and press the login button.<br>
 
-<b>ACTION:</b> Create a `****Context.php` file, and add the relevant functions to interact with the objects from the `Page.php` file.<br>
+<b>ACTION:</b> Create a `XXXXContext.php` file, and add the relevant functions to interact with the objects from the `Page.php` file.<br>
 This file will detail function for interacting with your objects.<br>
 The number of functions you write will vary from context to context - typically, the more complicated a UI is, the more functions will be required.<br>
 Follow the syntax and naming conventions from other CONTEXT files.<br>
