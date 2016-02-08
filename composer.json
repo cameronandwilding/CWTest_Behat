@@ -16,5 +16,10 @@
     "psr-4": {
       "CWTest\\": "src/"
     }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "bootstrap.sh"
+    ]
   }
 }

@@ -3,9 +3,9 @@
 ##############################################################################
 ###    GLOBAL VARS
 ##############################################################################
-CW_TEST_DIR = ../vendor/cw/cw_test
-SERVERS_DIR = ../Servers
-BEHAT_DIR = ../vendor/bin
+CW_TEST_DIR=../vendor/cw/cw_test
+SERVERS_DIR=../Servers
+BEHAT_DIR=../vendor/bin
 
 ##############################################################################
 ###    ASSIGN SCRIPT VARIABLES
