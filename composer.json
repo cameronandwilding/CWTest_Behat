@@ -21,5 +21,11 @@
     "post-install-cmd": [
       "bootstrap.sh"
     ]
-  }
+  },
+  "bin": [
+    "bin/start_phantomjs_webdriver.sh",
+    "bin/start_selenium_server.sh",
+    "bin/stop_phantomjs_webdriver.sh",
+    "bin/stop_selenium_server.sh"
+  ]
 }
