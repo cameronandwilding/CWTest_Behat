@@ -1,6 +1,13 @@
 #!/bin/sh
 
 ##############################################################################
+###    GLOBAL VARS
+##############################################################################
+CW_TEST_DIR = ../vendor/cw/cw_test
+SERVERS_DIR = ../Servers
+BEHAT_DIR = ../vendor/bin
+
+##############################################################################
 ###    ASSIGN SCRIPT VARIABLES
 ##############################################################################
 TAG=$1
@@ -31,66 +38,39 @@ fi
 
 
 ##############################################################################
-###    SYNC Project_Files PRIOR TO EXECUTION
-##############################################################################
-rsync ../Project_Files/behat.yml features/..
-rsync ../Project_Files/contexts/*.php features/bootstrap
-rsync -a ../Project_Files/features/* features/
-rsync -a ../Project_Files/images ../Behat
-rsync -a ../Project_Files/pages ../Behat
-
-
-##############################################################################
 ###    TEST EXECUTION
 ##############################################################################
 if [ $PROFILE = "firefox" ] || [ $PROFILE = "chrome"  ]
 then
-   sh ../Servers/start_selenium_server.sh;
+   sh {$CW_TEST_DIR}/Servers/start_selenium_server.sh $SERVERS_DIR/selium.jar;
    if [ ! -z "$SCENARIO_NAME" ]
    then
-      bin/behat -c behat.ym --tags=@$TAG -p $PROFILE --name="$SCENARIO_NAME"
+      {$BEHAT_DIR}/behat -c behat.yml --tags=@$TAG -p $PROFILE --name="$SCENARIO_NAME"
    else
-      bin/behat -c behat.yml --tags=@$TAG -p $PROFILE
+      {$BEHAT_DIR}/behat -c behat.yml --tags=@$TAG -p $PROFILE
    fi
 fi
 
 if [ $PROFILE = "phantomjs" ]
 then
-   sh ../Servers/start_phantomjs_webdriver.sh;
-   bin/behat --tags=@$TAG -p $PROFILE
+   sh {$CW_TEST_DIR}/Servers/start_phantomjs_webdriver.sh;
+   {$BEHAT_DIR}/behat --tags=@$TAG -p $PROFILE
 fi
 
 
 ##############################################################################
 ###    TEARDOWN
 ##############################################################################
-# Remove YML config
-rm behat.yml
-
-# Remove all feature subdirectories except bootstrap.
-find ./features -type d -not -name bootstrap -not -name features -exec rm -R {} \;
-
-# Remove 'pages'
-rm -R pages
-
-# Remove 'images'
-rm -R images
-
-# Remove all files in 'bootstrap' except HelperContext.php
-cd features/bootstrap
-ls * | grep -v HelperContext.php | xargs rm -rf
-cd ../..
-
 #  Stop PhantomJS webdriver.
 if [ $PROFILE = "phantomjs" ]
 then
-   sh ../Servers/stop_phantomjs_webdriver.sh
+   sh {$CW_TEST_DIR}/Servers/stop_phantomjs_webdriver.sh
 fi
 
 #  Stop Selenium server.
 if [ $PROFILE = "firefox" ] || [ $PROFILE = "chrome"  ]
 then
-   sh ../Servers/stop_selenium_server.sh
+   sh {$CW_TEST_DIR}/Servers/stop_selenium_server.sh
 fi
 
 
