@@ -12,8 +12,7 @@ function checkAndStartSeleniumServer {
 }
 
 function runSeleniumServer {
-  java -jar $1 -port 4444 -trustAllSSLCertificates &
+  java -jar ../Servers/selenium.jar -port 4444 -trustAllSSLCertificates &
 }
 
 checkAndStartSeleniumServer
-

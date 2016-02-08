@@ -3,9 +3,7 @@
 ##############################################################################
 ###    GLOBAL VARS
 ##############################################################################
-CW_TEST_DIR=../vendor/cw/cw_test
-SERVERS_DIR=../Servers
-BEHAT_DIR=../vendor/bin
+COMPOSER_BIN=../bin
 
 ##############################################################################
 ###    ASSIGN SCRIPT VARIABLES
@@ -42,19 +40,19 @@ fi
 ##############################################################################
 if [ $PROFILE = "firefox" ] || [ $PROFILE = "chrome"  ]
 then
-   sh {$CW_TEST_DIR}/Servers/start_selenium_server.sh $SERVERS_DIR/selium.jar;
+   sh $COMPOSER_BIN/start_selenium_server.sh;
    if [ ! -z "$SCENARIO_NAME" ]
    then
-      {$BEHAT_DIR}/behat -c behat.yml --tags=@$TAG -p $PROFILE --name="$SCENARIO_NAME"
+      $COMPOSER_BIN/behat -c behat.yml --tags=@$TAG -p $PROFILE --name="$SCENARIO_NAME"
    else
-      {$BEHAT_DIR}/behat -c behat.yml --tags=@$TAG -p $PROFILE
+      $COMPOSER_BIN/behat -c behat.yml --tags=@$TAG -p $PROFILE
    fi
 fi
 
 if [ $PROFILE = "phantomjs" ]
 then
-   sh {$CW_TEST_DIR}/Servers/start_phantomjs_webdriver.sh;
-   {$BEHAT_DIR}/behat --tags=@$TAG -p $PROFILE
+   sh $COMPOSER_BIN/start_phantomjs_webdriver.sh;
+   $COMPOSER_BIN/behat --tags=@$TAG -p $PROFILE
 fi
 
 
@@ -64,13 +62,13 @@ fi
 #  Stop PhantomJS webdriver.
 if [ $PROFILE = "phantomjs" ]
 then
-   sh {$CW_TEST_DIR}/Servers/stop_phantomjs_webdriver.sh
+   sh $COMPOSER_BIN/stop_phantomjs_webdriver.sh
 fi
 
 #  Stop Selenium server.
 if [ $PROFILE = "firefox" ] || [ $PROFILE = "chrome"  ]
 then
-   sh {$CW_TEST_DIR}/Servers/stop_selenium_server.sh
+   sh $COMPOSER_BIN/stop_selenium_server.sh
 fi
 
 
