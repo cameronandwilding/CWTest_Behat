@@ -3,6 +3,8 @@
  * @file
  */
 
+namespace CWTest;
+
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Behat\Hook\Scope\AfterStepScope;
@@ -1019,5 +1021,5 @@ class RandomItems {
  *
  * A class to handle exceptions.
  */
-class CWContextException extends Exception {
+class CWContextException extends \Exception {
 }

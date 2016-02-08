@@ -5,5 +5,20 @@
       "name": "Cameron and Wilding",
       "email": "info@cameronandwilding.com"
     }
-  ]
+  ],
+  "require": {
+    "behat/behat": "3.0.6",
+    "drupal/drupal-extension": "~3.0",
+    "emuse/behat-html-formatter": "0.1.0",
+    "phpunit/phpunit": "*"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "bin": ["bin/run-behat.sh"],
+  "autoload": {
+    "psr-4": {
+      "CWTest\\": "src/"
+    }
+  }
 }
