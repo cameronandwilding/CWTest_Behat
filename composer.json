@@ -17,11 +17,6 @@
       "CWTest\\": "src/"
     }
   },
-  "scripts": {
-    "post-package-install": [
-      "./bootstrap.sh"
-    ]
-  },
   "bin": [
     "bin/start_phantomjs_webdriver.sh",
     "bin/start_selenium_server.sh",
