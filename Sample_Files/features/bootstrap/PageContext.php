@@ -8,6 +8,7 @@
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use PHPUnit_Framework_Assert as Assertions;
+use CWTest\Context\HelperContext;
 
 class PageContext implements Context {
 
@@ -36,7 +37,7 @@ class PageContext implements Context {
    */
   public function gatherContexts(BeforeScenarioScope $scope) {
     $environment = $scope->getEnvironment();
-    $this->helper_context = $environment->getContext('HelperContext');
+    $this->helper_context = $environment->getContext('CWTest\Context\HelperContext');
   }
 
   /**

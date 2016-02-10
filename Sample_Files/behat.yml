@@ -5,10 +5,10 @@ default:
       filters:
         tags: @login
       contexts:
-        - LoginCo ntext
+        - LoginContext
         - MyAccountContext
         - PageContext
-        - HelperContext:
+        - CWTest\Context\HelperContext:
             parameters:
               screenshot_path: %paths.base%/../Results/Behat/screenshots
         - Drupal\DrupalExtension\Context\MinkContext
@@ -20,7 +20,7 @@ default:
       contexts:
         - ArticleContext
         - PageContext
-        - HelperContext:
+        - CWTest\Context\HelperContext:
             parameters:
               screenshot_path: %paths.base%/../Results/Behat/screenshots
         - Drupal\DrupalExtension\Context\DrupalContext
@@ -31,7 +31,7 @@ default:
         tags: @roles
       contexts:
         - PageContext
-        - HelperContext:
+        - CWTest\Context\HelperContext:
             parameters:
               screenshot_path: %paths.base%/../Results/Behat/screenshots
         - Drupal\DrupalExtension\Context\DrupalContext

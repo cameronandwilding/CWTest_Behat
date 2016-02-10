@@ -18,8 +18,8 @@
     }
   },
   "scripts": {
-    "post-install-cmd": [
-      "bootstrap.sh"
+    "post-package-install": [
+      "./bootstrap.sh"
     ]
   },
   "bin": [
