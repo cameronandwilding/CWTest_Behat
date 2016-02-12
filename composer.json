@@ -17,6 +17,9 @@
       "CWTest\\": "src/"
     }
   },
+  "post-package-install": [
+    "php -r 'echo getcwd();'"
+  ],
   "bin": [
     "bin/start_phantomjs_webdriver.sh",
     "bin/start_selenium_server.sh",
