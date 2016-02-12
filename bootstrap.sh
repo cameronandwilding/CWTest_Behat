@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # Scaffold out project structure.
-BEHAT_DIR=./../../../Behat
+TEST_DIR=./../../..
 SERVER_DIR=./../../../Servers
 RESULTS_DIR=./../../../Results
 
-mkdir ${BEHAT_DIR}
+mkdir ${TEST_DIR}
 mkdir ${SERVER_DIR}
 mkdir ${RESULTS_DIR}
 
@@ -16,7 +16,7 @@ cp -R Sample_Files/* ${BEHAT_DIR}
 wget http://selenium-release.storage.googleapis.com/2.49/selenium-server-standalone-2.49.1.jar -O ${SERVER_DIR}/selenium.jar
 
 # Create a local behat configuration file.
-cat > ${BEHAT_DIR}/behat.local.yml << EOF
+cat > ${TEST_DIR}/Behat/behat.local.yml << EOF
 default:
   extensions:
     Behat\MinkExtension:
