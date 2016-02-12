@@ -5,9 +5,9 @@ default:
       filters:
         tags: @login
       contexts:
-        - LoginContext
-        - MyAccountContext
-        - PageContext
+        - ProjectFiles\Context\LoginContext
+        - ProjectFiles\Context\MyAccountContext
+        - ProjectFiles\Context\PageContext
         - CWTest\Context\HelperContext:
             parameters:
               screenshot_path: %paths.base%/../Results/Behat/screenshots
@@ -18,8 +18,8 @@ default:
       filters:
         tags: @article
       contexts:
-        - ArticleContext
-        - PageContext
+        - ProjectFiles\Context\ArticleContext
+        - ProjectFiles\Context\PageContext
         - CWTest\Context\HelperContext:
             parameters:
               screenshot_path: %paths.base%/../Results/Behat/screenshots
@@ -30,7 +30,7 @@ default:
       filters:
         tags: @roles
       contexts:
-        - PageContext
+        - ProjectFiles\Context\PageContext
         - CWTest\Context\HelperContext:
             parameters:
               screenshot_path: %paths.base%/../Results/Behat/screenshots
