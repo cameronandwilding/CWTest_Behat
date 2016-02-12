@@ -1,15 +1,14 @@
 #!/bin/sh
 
 # Scaffold out project structure.
-TEST_DIR=./../../..
-SERVER_DIR=./../../../Servers
-RESULTS_DIR=./../../../Results
+SERVER_DIR=./../Servers
+RESULTS_DIR=./../Results
 
 mkdir ${SERVER_DIR}
 mkdir ${RESULTS_DIR}
 
 # Copy the sample files over to the main directory.
-cp -R Sample_Files/* ${TEST_DIR}
+cp -R Sample_Files/* ./../
 
 # Get Selenium Server.
 wget http://selenium-release.storage.googleapis.com/2.49/selenium-server-standalone-2.49.1.jar -O ${SERVER_DIR}/selenium.jar

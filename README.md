@@ -1,33 +1,44 @@
-SETUP & EXECUTION 
-=================
+#SETUP & EXECUTION 
 
 1. Select a location for the framework
-======================================
-Create a folder, ideally inside your Drupal project root.
+--------------------------------------
+Create a folder, ideally in a Test folder in your project, outside your Drupal webroot.
 
 
-
-2. Get the framework
-====================
-In terminal, open the above folder and type:<br>
+2. Install via [Composer](https://getcomposer.org/)
+---------------------------------------------------
+Create a `composer.json` file in the test folder root.
 ```
-composer require cw_test/behat_framework=dev-master
+{
+  "require": {
+    "cw/cw_test": "*"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "autoload": {
+    "psr-4": {
+      "ProjectFiles\\": "src/"
+    }
+  }
+}
 ```
 
 3. Install the framework
-========================
+------------------------
 Run the bootstrap shell script:<br>
 ```
-cd vendor/cw_test/behat_framework && ./bootstrap.sh
+./bin/cwtest-bootstrap.sh
 ```
 
-Inside `vendor/cw_test/behat_framework/Behat/behat.local.yml`, update:<br>
+### Update your local configuration
+
+Inside `/Behat/behat.local.yml`, update:<br>
 * the `base_url` to your local site url<br>
 * the `drupal_root` value to the path to your local drupal installation.
 
 
-3a. Optional Step
-=================
+### 3a. Optional Step
 This is only required if you want to run tests on Chrome.<br>
 (By default, Firefox works out-of-the-box.)
 
@@ -36,11 +47,11 @@ This is only required if you want to run tests on Chrome.<br>
 
 
 4. Verify Setup Successful
-==========================
+--------------------------
 Navigate to:
 
 ```
-[LOCAL DRUPAL INSTALL FOLDER]/Behat
+/Behat
 ```
 
 Execute the following:
@@ -52,12 +63,12 @@ Execute the following:
 You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
-5. Test Execution
-=================
+Test Execution
+==============
 Navigate to:
 
 ```
-[LOCAL DRUPAL INSTALL FOLDER]/Behat
+/Behat
 ```
 
 To execute all of the tests, select one of the following options based on the format `./run-behat.sh [tag] [profile]`:
@@ -72,9 +83,9 @@ or
 ./run-behat.sh regression chrome
 ```
 
-6. Test Results
-===============
-The results of all tests will be stored in `[LOCAL DRUPAL INSTALL FOLDER]/Results/Behat/Twig_***.html`
+Test Results
+============
+The results of all tests will be stored in `/Results/Behat/Twig_***.html`
 
 
 BEHAT TEST WRITING PROCESS
@@ -145,6 +156,11 @@ Every new feature file that gets created will require that a new entry is made t
  * reference - <a href="http://docs.behat.org/en/v3.0/guides/5.suites.html">Suites</a><br>
  * reference - <a href="http://docs.behat.org/en/v3.0/guides/6.profiles.html">Profiles</a><br>
 
+TAGS
+====
+
+@todo: Please add section detailing the tagging process.
+
 
 
 TROUBLESHOOTING
@@ -157,4 +173,3 @@ https://github.com/composer/composer/blob/master/doc/articles/troubleshooting.md
 
 3. If you get errors related to timezone settings, add the following to your path profile (with the appropriate version of PHP):<br>
 `export PATH="/Applications/MAMP/bin/php/php5.6.7/bin:$PATH"`
-
