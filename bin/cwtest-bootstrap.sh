@@ -1,28 +1,14 @@
 #!/bin/sh
 
-# Scaffold out project structure.
-SERVER_DIR=./../Servers
-RESULTS_DIR=./../Results
+# Make directories.
+mkdir ./../Servers
+mkdir ./../Results
+mkdir ./../Results/Behat
+mkdir ./../Results/Behat/screenshots
 
-mkdir ${SERVER_DIR}
-mkdir ${RESULTS_DIR}
+# Download selenium
+wget http://selenium-release.storage.googleapis.com/2.49/selenium-server-standalone-2.49.1.jar -O ./../Servers/selenium.jar
 
-# Copy the sample files over to the main directory.
-cp -R Sample_Files/* ./../
-
-# Get Selenium Server.
-wget http://selenium-release.storage.googleapis.com/2.49/selenium-server-standalone-2.49.1.jar -O ${SERVER_DIR}/selenium.jar
-
-# Create a local behat configuration file.
-cat > ${TEST_DIR}/Behat/behat.local.yml << EOF
-default:
-  extensions:
-    Behat\MinkExtension:
-      base_url: http://
-    Drupal\DrupalExtension:
-      drupal:
-        drupal_root: /Applications/MAMP/htdocs/
-EOF
-
-# Create screenshots directory.
-cd ${RESULTS_DIR} && mkdir Behat && cd Behat && mkdir screenshots
+# Copy over the sample files directory.
+BIN_DIR="$(dirname $(readlink $BASH_SOURCE))"
+cp -R ${BIN_DIR}/../Sample_Files/* ./../

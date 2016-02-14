@@ -1,0 +1,7 @@
+default:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://
+    Drupal\DrupalExtension:
+      drupal:
+        drupal_root: /Applications/MAMP/htdocs/

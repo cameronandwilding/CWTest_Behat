@@ -243,7 +243,7 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
       sleep(1);
     }
 
-    throw new CWC("Timeout thrown by spinner - element {$locator} is not visible after 30 seconds.");
+    throw new CWContextException("Timeout thrown by spinner - element {$locator} is not visible after 30 seconds.");
   }
 
   /**
