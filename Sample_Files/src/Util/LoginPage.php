@@ -5,6 +5,8 @@
  * Class LoginPage describes the objects on the login page.
  */
 
+namespace ProjectFiles\Util;
+
 class LoginPage extends Page {
 
   /**

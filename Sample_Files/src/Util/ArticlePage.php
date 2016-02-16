@@ -5,6 +5,8 @@
  * Class ArticlePage describes the objects on the article page.
  */
 
+namespace ProjectFiles\Util;
+
 class ArticlePage {
 
   /**

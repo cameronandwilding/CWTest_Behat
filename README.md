@@ -1,33 +1,44 @@
-SETUP & EXECUTION 
-=================
+#SETUP & EXECUTION 
 
 1. Select a location for the framework
-======================================
-Create a folder, ideally inside your Drupal project root.
+--------------------------------------
+Create a folder, ideally in a Test folder in your project, outside your Drupal webroot.
 
 
-
-2. Get the framework
-====================
-In terminal, open the above folder and type:<br>
+2. Install via [Composer](https://getcomposer.org/)
+---------------------------------------------------
+Create a `composer.json` file in the test folder root.
 ```
-composer require cw_test/behat_framework=dev-master
+{
+  "require": {
+    "cw/cw_test": "*"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "autoload": {
+    "psr-4": {
+      "ProjectFiles\\": "src/"
+    }
+  }
+}
 ```
 
 3. Install the framework
-========================
+------------------------
 Run the bootstrap shell script:<br>
 ```
-cd vendor/cw_test/behat_framework && ./bootstrap.sh
+cd bin && ./cwtest-bootstrap.sh
 ```
 
-Inside `vendor/cw_test/behat_framework/Behat/behat.local.yml`, update:<br>
+### Update your local configuration
+
+Inside `/Behat/behat.local.yml`, update:<br>
 * the `base_url` to your local site url<br>
 * the `drupal_root` value to the path to your local drupal installation.
 
 
-3a. Optional Step
-=================
+### 3a. Optional Step
 This is only required if you want to run tests on Chrome.<br>
 (By default, Firefox works out-of-the-box.)
 
@@ -36,11 +47,11 @@ This is only required if you want to run tests on Chrome.<br>
 
 
 4. Verify Setup Successful
-==========================
+--------------------------
 Navigate to:
 
 ```
-[LOCAL DRUPAL INSTALL FOLDER]/Behat
+/Behat
 ```
 
 Execute the following:
@@ -52,12 +63,12 @@ Execute the following:
 You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
-5. Test Execution
-=================
+Test Execution
+==============
 Navigate to:
 
 ```
-[LOCAL DRUPAL INSTALL FOLDER]/Behat
+/Behat
 ```
 
 To execute all of the tests, select one of the following options based on the format `./run-behat.sh [tag] [profile]`:
@@ -72,9 +83,9 @@ or
 ./run-behat.sh regression chrome
 ```
 
-6. Test Results
-===============
-The results of all tests will be stored in `[LOCAL DRUPAL INSTALL FOLDER]/Results/Behat/Twig_***.html`
+Test Results
+============
+The results of all tests will be stored in `/Results/Behat/Twig_***.html`
 
 
 BEHAT TEST WRITING PROCESS
@@ -96,7 +107,7 @@ For the rest of the following, let's think of a login scenario where a user is g
 
 <u>2. FEATURE file</u><br>
 This file contains the high-level test scenarios written in a Gherkin syntax.<br>
-These files are located in Project_Files/features/.<br>
+These files are located in Behat/features/.<br>
 They all follow the naming convention XXXX.feature.<br>
 For example, in the `LoginPage.feature`, there are tests to ensure a valid login is successful.<br>
 
@@ -104,12 +115,12 @@ For example, in the `LoginPage.feature`, there are tests to ensure a valid login
 Follow the syntax used in other tests.<br>
 Where possible, re-use existing sentences from the `.feature` file as these will already have been automated.<br>
 If you are creating a new sentence, keep it short but descriptive.<br>
- * template - `/ProjectFiles/features/LoginPage.feature`<br>
+ * template - `/Sample_Files/Behat/features/LoginPage.feature`<br>
  * reference - <a href="http://docs.behat.org/en/v3.0/guides/1.gherkin.html">Gherkin</a><br>
 
 <u>3. PAGE.php file</u><br>
 This file contains the path, page objects, and getters/setters for all the fields on the page XXXX.<br>
-These files are located in Project_Files/pages/.<br>
+These files are located in src/Util/.<br>
 They all follow the naming convention XXXXPage.php.<br>
 For example, in the `LoginPage.php`, there are the username, password, and login button objects detailed.<br>
 
@@ -118,11 +129,11 @@ For Create/Edit/View content types, you generally want to add every object that 
 Using the template provided, create your `XXXXPage.php` file. <br>
 Take care to separate textfields, buttons, frames, etc, and follow the syntax and naming conventions from other PAGE files.<br>
 Where possible, always use IDs for your objects. If IDs are not available, consider using name, data-drupal-selector, or xpath.<br>
- * template - `/ProjectFiles/pages/ArticlePage.php`<br>
+ * template - `/Sample_Files/src/Util/ArticlePage.php`<br>
 
 <u>4. CONTEXT.php file</u><br>
 This file contains all of the functions that are specific to the XXXX page.<br>
-These files are located in Project_Files/contexts.<br>
+These files are located in src/Context.<br>
 They all follow the naming convention XXXXContext.php.<br>
 For example, in the `LoginContext.php`, there are functions to fill in the username and password fields, and press the login button.<br>
 
@@ -131,7 +142,7 @@ This file will detail function for interacting with your objects.<br>
 The number of functions you write will vary from context to context - typically, the more complicated a UI is, the more functions will be required.<br>
 Follow the syntax and naming conventions from other CONTEXT files.<br>
 Keep all functions as short as possible, ideally doing one thing each, like filling in a text field.<br>
- * template - `/ProjectFiles/contexts/ArticleContext.php`<br>
+ * template - `/Sample_Files/src/Context/ArticleContext.php`<br>
  * reference - <a href="http://docs.behat.org/en/v3.0/guides/2.definitions.html">Step definitions</a><br>
  * reference - <a href="http://docs.behat.org/en/v3.0/guides/3.hooks.html">Hooks</a><br>
  * reference - <a href="http://docs.behat.org/en/v3.0/guides/4.contexts.html">Contexts</a><br>
@@ -141,9 +152,14 @@ This file contains most of the configuration settings that are required for beha
 Every new feature file that gets created will require that a new entry is made to this file.<br>
 
 <b>ACTION:</b> Follow the example of the `login` from lines 3-15. Copy and paste this inside the `default` profile, and update the `login` values with the correct values.<br>
- * file - `/ProjectFiles/behat.yml`<br>
+ * file - `/Behat/behat.yml`<br>
  * reference - <a href="http://docs.behat.org/en/v3.0/guides/5.suites.html">Suites</a><br>
  * reference - <a href="http://docs.behat.org/en/v3.0/guides/6.profiles.html">Profiles</a><br>
+
+TAGS
+====
+
+@todo: Please add section detailing the tagging process.
 
 
 
@@ -157,4 +173,3 @@ https://github.com/composer/composer/blob/master/doc/articles/troubleshooting.md
 
 3. If you get errors related to timezone settings, add the following to your path profile (with the appropriate version of PHP):<br>
 `export PATH="/Applications/MAMP/bin/php/php5.6.7/bin:$PATH"`
-

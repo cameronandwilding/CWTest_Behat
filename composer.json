@@ -1,9 +1,27 @@
 {
-  "name": "cw_test/behat_framework",
+  "name": "cw/cw_test",
   "authors": [
     {
       "name": "Cameron and Wilding",
       "email": "info@cameronandwilding.com"
     }
+  ],
+  "require": {
+    "behat/behat": "3.0.6",
+    "drupal/drupal-extension": "~3.0",
+    "emuse/behat-html-formatter": "0.1.0",
+    "phpunit/phpunit": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "CWTest\\": "src/"
+    }
+  },
+  "bin": [
+    "bin/start_phantomjs_webdriver.sh",
+    "bin/start_selenium_server.sh",
+    "bin/stop_phantomjs_webdriver.sh",
+    "bin/stop_selenium_server.sh",
+    "bin/cwtest-bootstrap.sh"
   ]
 }

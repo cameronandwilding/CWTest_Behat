@@ -5,6 +5,8 @@
  * Class MyAccountPage describes the objects on the my account page.
  */
 
+namespace ProjectFiles\Util;
+
 class MyAccountPage {
   /**
    * @var string $path

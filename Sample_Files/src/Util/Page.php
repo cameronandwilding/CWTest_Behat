@@ -5,6 +5,8 @@
  * Class Page describes the objects on general pages.
  */
 
+namespace ProjectFiles\Util;
+
 class Page {
 
   /**

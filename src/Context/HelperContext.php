@@ -3,12 +3,16 @@
  * @file
  */
 
+namespace CWTest\Context;
+
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Behat\Hook\Scope\AfterStepScope;
 use Drupal\DrupalExtension\Context\MinkContext;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use CWTest\Exception\CWContextException;
+use CWTest\Util\RandomItems;
 
 /**
  * Class HelperContext
@@ -985,39 +989,4 @@ JS;
    * End of OBJECT REPOSITORY functions.
    *******************************************************************************/
 
-}
-
-/**
- * Class RandomItems
- *
- * A class to store random numbers and strings.
- */
-class RandomItems {
-
-  /**
-   * A random number.
-   * @var integer
-   */
-  public $number;
-
-  /**
-   * A random alphanumeric string.
-   * @var string
-   */
-  public $alphaNumber;
-
-  /**
-   * A random string.
-   * @var string
-   */
-  public $alpha;
-
-}
-
-/**
- * Class CWContextException
- *
- * A class to handle exceptions.
- */
-class CWContextException extends Exception {
 }

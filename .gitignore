@@ -4,14 +4,3 @@
 # Ignore files/directories created by installs
 vendor
 cache
-Behat/bin
-Behat/vendor
-Behat/pages
-Behat/images
-Behat/behat.local.yml
-
-# Ignore Servers
-Servers
-
-# Ignore Results
-Results

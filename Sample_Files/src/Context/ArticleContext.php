@@ -5,7 +5,11 @@
  * Class ArticleContext implements the behavior for article pages.
  */
 
+namespace ProjectFiles\Context;
+
 use Behat\Gherkin\Node\TableNode;
+use CWTest\Exception\CWContextException;
+use ProjectFiles\Util\ArticlePage;
 
 class ArticleContext extends PageContext {
 

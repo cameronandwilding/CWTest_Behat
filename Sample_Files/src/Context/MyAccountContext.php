@@ -5,6 +5,10 @@
  * Class MyAccountContext implements the behavior for my account pages.
  */
 
+namespace ProjectFiles\Context;
+
+use ProjectFiles\Util\MyAccountPage;
+
 class MyAccountContext extends PageContext {
 
   //  Regions.
