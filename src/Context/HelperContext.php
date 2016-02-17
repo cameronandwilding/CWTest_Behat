@@ -48,6 +48,10 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
   // Date format.
   const DATE_FORMAT_CONCISE = "dmY-His";
 
+  //  File extensions.
+  const EXTENSION_HTML = '.html';
+  const EXTENSION_JPG = '.jpg';
+
   /**
    * Parameters inherited from the .yml file
    * @var string
