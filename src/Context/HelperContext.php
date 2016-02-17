@@ -83,6 +83,13 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
    */
   public $currentScenario;
 
+  /**
+   * The current Behat scenario name.
+   *
+   * @var string
+   */
+  public $scenarioName;
+
   /*******************************************************************************
    * Start of INITIALISATION functions.
    *******************************************************************************/
@@ -110,6 +117,7 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
     $this->minkContext = $environment->getContext('Drupal\DrupalExtension\Context\MinkContext');
 
     $this->currentScenario = $scope->getScenario();
+    $this->scenarioName = $this->currentScenario->getTitle();
   }
 
   /**
@@ -138,9 +146,9 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
   /**
    * @AfterStep
    *
-   * Take screenshot when step fails.
+   * Take screenshot and HTML dump when test fails.
    */
-  public function takeScreenshotAfterFailedStep(AfterStepScope $scope) {
+  public function captureScreenAfterFailedStep(AfterStepScope $scope) {
     if (self::ERROR_CODE === $scope->getTestResult()->getResultCode()) {
       $driver = $this->getSession()->getDriver();
 
@@ -148,29 +156,38 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
       $featureFolder = str_replace(' ', '', $scope->getFeature()->getTitle());
 
       // Get the name of the failed test.
-      $scenarioName = $this->currentScenario->getTitle();
-      $failedTest = str_replace(' ', '', $scenarioName);
+      $failedTest = str_replace(' ', '', $this->scenarioName);
 
-      // Set the screenshot folder.
+      // Set the destination screenshot folder.
       $filePath = $this->parameters['screenshot_path'] . '/' . $featureFolder;
       if (!file_exists($filePath)) {
         mkdir($filePath);
       }
 
+      //  Headless test - save an HTML dump.
       if ($driver instanceof \Behat\Mink\Driver\BrowserKitDriver) {
         $html_data = $this->getSession()->getDriver()->getContent();
-        $fileName = date(self::DATE_FORMAT_CONCISE) . '-' . $failedTest . '.html';
+        $fileName = date(self::DATE_FORMAT_CONCISE) . '-' . $failedTest . self::EXTENSION_HTML;
         file_put_contents($filePath . '/' . $fileName, $html_data);
         return;
       }
 
+      //  Browser test - save an HTML dump + a JPG.
       if ($driver instanceof \Behat\Mink\Driver\Selenium2Driver) {
-        $fileName = date(self::DATE_FORMAT_CONCISE) . '-' . $failedTest . '.jpg';
+
+        //  Generate HTML dump.
+        $html_data = $this->getSession()->getDriver()->getContent();
+        $fileName = date(self::DATE_FORMAT_CONCISE) . '-' . $failedTest . self::EXTENSION_HTML;
+        file_put_contents($filePath . '/' . $fileName, $html_data);
+
+        //  Generate JPG.
+        $fileName = date(self::DATE_FORMAT_CONCISE) . '-' . $failedTest . self::EXTENSION_JPG;
         $this->saveScreenshot($fileName, $filePath);
         return;
       }
     }
   }
+
   /*******************************************************************************
    * End of INITIALISATION functions.
    *******************************************************************************/
