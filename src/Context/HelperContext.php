@@ -48,6 +48,11 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
   // Date format.
   const DATE_FORMAT_CONCISE = "dmY-His";
 
+  //  File extensions.
+  const EXTENSION_DOT = '.';
+  const EXTENSION_HTML = 'html';
+  const EXTENSION_JPG = 'jpg';
+
   /**
    * Parameters inherited from the .yml file
    * @var string
@@ -75,13 +80,20 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
    * Array of page elements
    * @var array
    */
-  public $pageElements = array();
+  private $pageElements = array();
 
   /**
    * The current Behat scenario.
    * @var string
    */
-  public $currentScenario;
+  private $currentScenario;
+
+  /**
+   * The current Behat scenario name.
+   *
+   * @var string
+   */
+  private $scenarioName;
 
   /*******************************************************************************
    * Start of INITIALISATION functions.
@@ -110,6 +122,7 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
     $this->minkContext = $environment->getContext('Drupal\DrupalExtension\Context\MinkContext');
 
     $this->currentScenario = $scope->getScenario();
+    $this->scenarioName = $this->currentScenario->getTitle();
   }
 
   /**
@@ -138,39 +151,39 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
   /**
    * @AfterStep
    *
-   * Take screenshot when step fails.
+   * Take screenshot and HTML dump when test fails.
    */
-  public function takeScreenshotAfterFailedStep(AfterStepScope $scope) {
-    if (self::ERROR_CODE === $scope->getTestResult()->getResultCode()) {
-      $driver = $this->getSession()->getDriver();
+  public function captureScreenAfterFailedStep(AfterStepScope $scope) {
+    if (self::ERROR_CODE !== $scope->getTestResult()->getResultCode()) {
+      return;
+    }
 
-      // Get the name of the feature file.
-      $featureFolder = str_replace(' ', '', $scope->getFeature()->getTitle());
+    // Remove quotes from the test step name.
+    $failed_test_step = preg_replace('/[^a-zA-Z0-9\-]+/', '_', $scope->getStep()->getText());
 
-      // Get the name of the failed test.
-      $scenarioName = $this->currentScenario->getTitle();
-      $failedTest = str_replace(' ', '', $scenarioName);
+    // Set the screenshot location.
+    $filePath = $this->parameters['screenshots'];
 
-      // Set the screenshot folder.
-      $filePath = $this->parameters['screenshot_path'] . '/' . $featureFolder;
-      if (!file_exists($filePath)) {
-        mkdir($filePath);
-      }
+    $driver = $this->getSession()->getDriver();
+    $filename_prefix = date(self::DATE_FORMAT_CONCISE) . '-' . $failed_test_step;
+    if ($driver instanceof \Behat\Mink\Driver\BrowserKitDriver) {
+      //  Generate HTML dump.
+      $html_data = $this->getSession()->getDriver()->getContent();
+      $fileName = $filename_prefix . self::EXTENSION_DOT . self::EXTENSION_HTML;
+      file_put_contents($filePath . '/' . $fileName, $html_data);
+    }
+    elseif ($driver instanceof \Behat\Mink\Driver\Selenium2Driver) {
+      //  Generate HTML dump.
+      $html_data = $this->getSession()->getDriver()->getContent();
+      $fileName = $filename_prefix . self::EXTENSION_DOT . self::EXTENSION_HTML;
+      file_put_contents($filePath . '/' . $fileName, $html_data);
 
-      if ($driver instanceof \Behat\Mink\Driver\BrowserKitDriver) {
-        $html_data = $this->getSession()->getDriver()->getContent();
-        $fileName = date(self::DATE_FORMAT_CONCISE) . '-' . $failedTest . '.html';
-        file_put_contents($filePath . '/' . $fileName, $html_data);
-        return;
-      }
-
-      if ($driver instanceof \Behat\Mink\Driver\Selenium2Driver) {
-        $fileName = date(self::DATE_FORMAT_CONCISE) . '-' . $failedTest . '.jpg';
-        $this->saveScreenshot($fileName, $filePath);
-        return;
-      }
+      //  Generate JPG.
+      $fileName = $filename_prefix . self::EXTENSION_DOT . self::EXTENSION_JPG;
+      $this->saveScreenshot($fileName, $filePath);
     }
   }
+
   /*******************************************************************************
    * End of INITIALISATION functions.
    *******************************************************************************/
