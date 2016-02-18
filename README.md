@@ -11,7 +11,7 @@ Create a `composer.json` file in the test folder root.
 ```
 {
   "require": {
-    "cw/cw_test": "*"
+    "cw/behat_test": "*"
   },
   "config": {
     "bin-dir": "bin/"
