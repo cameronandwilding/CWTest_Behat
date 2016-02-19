@@ -24,6 +24,11 @@ Create a `composer.json` file in the test folder root.
 }
 ```
 
+Then run:<br>
+```
+composer install
+```
+
 3. Install the framework
 ------------------------
 Run the bootstrap shell script:<br>
