@@ -795,7 +795,7 @@ JS;
    * Assume result rows always start with the 'em' tag.
    */
   public function createDOMOfPage() {
-    $dom = new DOMDocument();
+    $dom = new \DOMDocument();
     libxml_use_internal_errors(TRUE);
     $dom->loadHTML($this->getHtml());
     $dom->preserveWhiteSpace = FALSE;
@@ -807,7 +807,7 @@ JS;
    */
   public function getNodesMatchingXpath($dom, $xpath) {
     // Create a DOMXpath object.
-    $xpathDOM = new DomXPath($dom);
+    $xpathDOM = new \DomXPath($dom);
     $nodes = $xpathDOM->query($xpath);
     return $nodes;
   }
@@ -999,7 +999,7 @@ JS;
 
     // Perform loop to query and store any matches.
     foreach ($arrNodes as $node) {
-      $xpathDOM = new DomXPath($dom);
+      $xpathDOM = new \DomXPath($dom);
 
       // If id of object exists, save it.
       $id = $xpathDOM->query("@id", $node);
