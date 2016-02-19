@@ -27,21 +27,21 @@ class LoginContext extends PageContext  {
    *
    * @var LoginPage
    */
-  private $login_page;
+  private $loginPage;
 
   /**
    * LoginContext constructor.
    */
   public function __construct() {
     parent::__construct();
-    $this->login_page = new LoginPage();
+    $this->loginPage = new LoginPage();
   }
 
   /**
    * @Given I visit the Login page
    */
   public function visitLoginPage() {
-    $this->helper_context->visitPath($this->login_page->getPath());
+    $this->helperContext->visitPath($this->loginPage->getPath());
   }
 
   /**
@@ -49,9 +49,9 @@ class LoginContext extends PageContext  {
    * @throws \Behat\Mink\Exception\ElementNotFoundException
    */
   private function fillUsernameField($username) {
-    $this->helper_context->getSession()
+    $this->helperContext->getSession()
       ->getPage()
-      ->fillField($this->login_page->getField(self::FIELD_USERNAME), $username);
+      ->fillField($this->loginPage->getField(self::FIELD_USERNAME), $username);
   }
 
   /**
@@ -59,18 +59,18 @@ class LoginContext extends PageContext  {
    * @throws \Behat\Mink\Exception\ElementNotFoundException
    */
   private function fillPasswordField($password) {
-    $this->helper_context->getSession()
+    $this->helperContext->getSession()
       ->getPage()
-      ->fillField($this->login_page->getField(self::FIELD_PASSWORD), $password);
+      ->fillField($this->loginPage->getField(self::FIELD_PASSWORD), $password);
   }
 
   /**
    * @throws \Behat\Mink\Exception\ElementNotFoundException
    */
   private function pressLoginButton() {
-    $this->helper_context->getSession()
+    $this->helperContext->getSession()
       ->getPage()
-      ->pressButton($this->login_page->getButton(self::BUTTON_LOGIN));
+      ->pressButton($this->loginPage->getButton(self::BUTTON_LOGIN));
   }
 
   /**
@@ -112,8 +112,8 @@ class LoginContext extends PageContext  {
    * @Given I am still on the Login page
    */
   public function iAmStillOnTheLoginPage() {
-    $current_url = $this->helper_context->getSession()->getCurrentUrl();
-    if (strpos($current_url, $this->login_page->getPath()) === FALSE) {
+    $current_url = $this->helperContext->getSession()->getCurrentUrl();
+    if (strpos($current_url, $this->loginPage->getPath()) === FALSE) {
       throw new CWContextException("No longer on the Loginpage, but on {$current_url}.");
     }
   }
@@ -122,17 +122,17 @@ class LoginContext extends PageContext  {
    * @Given I should see the login failure message
    */
   public function iShouldSeeTheLoginFailureMessage() {
-    $this->helper_context->iCanSeeInTheRegion('Unrecognized username or password.', $this->login_page->getMessageRegion(self::REGION_LOGIN_FAILURE));
-    $this->helper_context->iCanSeeInTheRegion('Have you forgotten your password?', $this->login_page->getMessageRegion(self::REGION_LOGIN_FAILURE));
+    $this->helperContext->iCanSeeInTheRegion('Unrecognized username or password.', $this->loginPage->getMessageRegion(self::REGION_LOGIN_FAILURE));
+    $this->helperContext->iCanSeeInTheRegion('Have you forgotten your password?', $this->loginPage->getMessageRegion(self::REGION_LOGIN_FAILURE));
   }
 
   /**
    * @Given I verify the structure of the Login page
    */
   public function iVerifyTheStructureOfTheLoginPage() {
-    self::verifyFields($this->login_page->getAllFields());
-    self::verifyButtons($this->login_page->getAllButtons());
-    self::verifyRegions($this->login_page->getAllRegions());
+    self::verifyFields($this->loginPage->getAllFields());
+    self::verifyButtons($this->loginPage->getAllButtons());
+    self::verifyRegions($this->loginPage->getAllRegions());
   }
 }
 

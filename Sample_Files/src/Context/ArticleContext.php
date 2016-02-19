@@ -31,28 +31,28 @@ class ArticleContext extends PageContext {
    *
    * @var ArticlePage
    */
-  private $article_page;
+  private $articlePage;
 
   /**
    * Article page title.
    *
    * @var $string
    */
-  private $article_page_title;
+  private $articlePageTitle;
 
   /**
    * Article node id.
    *
    * @var $integer
    */
-  private $article_node_id;
+  private $articleNodeId;
 
   /**
    * ArticleContext constructor.
    */
   public function __construct() {
     parent::__construct();
-    $this->article_page = new ArticlePage();
+    $this->articlePage = new ArticlePage();
   }
 
   /**
@@ -61,10 +61,10 @@ class ArticleContext extends PageContext {
    * @param string $title
    */
   private function fillTitleField($title) {
-    $this->helper_context->iFillInFieldByIDWith($this->article_page->getField(self::FIELD_TITLE), $title);
-    $this->article_page_title = $this->helper_context->getSession()
+    $this->helperContext->iFillInFieldByIDWith($this->articlePage->getField(self::FIELD_TITLE), $title);
+    $this->articlePageTitle = $this->helperContext->getSession()
       ->getPage()
-      ->findById($this->article_page->getField(self::FIELD_TITLE))
+      ->findById($this->articlePage->getField(self::FIELD_TITLE))
       ->getValue();
   }
 
@@ -74,7 +74,7 @@ class ArticleContext extends PageContext {
    * @param string $body
    */
   private function fillBodyFrame($body) {
-    $this->helper_context->iFillInFrameWith($this->article_page->getFrame(self::FIELD_BODY), $body);
+    $this->helperContext->iFillInFrameWith($this->articlePage->getFrame(self::FIELD_BODY), $body);
   }
 
   /**
@@ -83,8 +83,8 @@ class ArticleContext extends PageContext {
    * @param string $image
    */
   private function attachImage($image) {
-    $this->helper_context->minkContext->attachFileToField($this->article_page->getField(self::FIELD_IMAGE), $image);
-    $this->helper_context->waitForJquery();
+    $this->helperContext->minkContext->attachFileToField($this->articlePage->getField(self::FIELD_IMAGE), $image);
+    $this->helperContext->waitForJquery();
   }
 
   /**
@@ -93,25 +93,25 @@ class ArticleContext extends PageContext {
    * @param string $alt
    */
   private function fillAltField($alt) {
-    $this->helper_context->iFillInFieldByDataDrupalSelectorWith($this->article_page->getHiddenField(self::FIELD_ALT), $alt);
+    $this->helperContext->iFillInFieldByDataDrupalSelectorWith($this->articlePage->getHiddenField(self::FIELD_ALT), $alt);
   }
 
   /**
    * @Given I press save and publish
    */
   public function iPressSaveAndPublish() {
-    $this->helper_context->getSession()
+    $this->helperContext->getSession()
       ->getPage()
-      ->pressButton($this->article_page->getCreateButton(self::BUTTON_SAVE_AND_PUBLISH));
+      ->pressButton($this->articlePage->getCreateButton(self::BUTTON_SAVE_AND_PUBLISH));
   }
 
   /**
    * @Given I press save and keep published
    */
   public function iPressSaveAndKeepPublished() {
-    $this->helper_context->getSession()
+    $this->helperContext->getSession()
       ->getPage()
-      ->pressButton($this->article_page->getEditButton(self::BUTTON_SAVE_AND_KEEP_PUBLISHED));
+      ->pressButton($this->articlePage->getEditButton(self::BUTTON_SAVE_AND_KEEP_PUBLISHED));
   }
 
   /**
@@ -128,28 +128,28 @@ class ArticleContext extends PageContext {
    * @Given I visit the Create Article page
    */
   public function visitCreateArticlePage() {
-    $this->helper_context->visitPath($this->article_page->getPath());
+    $this->helperContext->visitPath($this->articlePage->getPath());
   }
 
   /**
    * @Given I visit the Edit Article page
    */
   public function visitEditArticlePage() {
-    $this->helper_context->visitPath(self::getEditPath());
+    $this->helperContext->visitPath(self::getEditPath());
   }
 
   /**
    * @Given I visit the Delete Article page
    */
   public function visitDeleteArticlePage() {
-    $this->helper_context->visitPath(self::getDeletePath());
+    $this->helperContext->visitPath(self::getDeletePath());
   }
 
   /**
    * @Given I visit the View Article page
    */
   public function visitViewArticlePage() {
-    $this->helper_context->visitPath(self::getViewPath());
+    $this->helperContext->visitPath(self::getViewPath());
   }
 
   /**
@@ -157,7 +157,7 @@ class ArticleContext extends PageContext {
    * @return string
    */
   private function getEditPath() {
-    return '/node/' . $this->article_node_id . '/edit/';
+    return '/node/' . $this->articleNodeId . '/edit/';
   }
 
   /**
@@ -165,7 +165,7 @@ class ArticleContext extends PageContext {
    * @return string
    */
   private function getDeletePath() {
-    return '/node/' . $this->article_node_id . '/delete/';
+    return '/node/' . $this->articleNodeId . '/delete/';
   }
 
   /**
@@ -173,15 +173,15 @@ class ArticleContext extends PageContext {
    * @return string
    */
   private function getViewPath() {
-    return '/node/' . $this->article_node_id;
+    return '/node/' . $this->articleNodeId;
   }
 
   /**
    * @Given I am still on the Create Article page
    */
   public function iAmStillOnTheCreateArticlePage() {
-    $current_url = $this->helper_context->getSession()->getCurrentUrl();
-    if (strpos($current_url, $this->article_page->getPath()) === FALSE) {
+    $current_url = $this->helperContext->getSession()->getCurrentUrl();
+    if (strpos($current_url, $this->articlePage->getPath()) === FALSE) {
       throw new CWContextException("No longer on the Create Article page, but on {$current_url}.");
     }
   }
@@ -190,7 +190,7 @@ class ArticleContext extends PageContext {
    * @Given I am still on the Edit Article page
    */
   public function iAmStillOnTheEditArticlePage() {
-    $current_url = $this->helper_context->getSession()->getCurrentUrl();
+    $current_url = $this->helperContext->getSession()->getCurrentUrl();
     if (strpos($current_url, self::getEditPath()) === FALSE) {
       throw new CWContextException("No longer on the Edit Article page, but on {$current_url}.");
     }
@@ -209,15 +209,19 @@ class ArticleContext extends PageContext {
         case self::FIELD_TITLE:
           self::fillTitleField($value);
           break;
+
         case self::FIELD_BODY:
           self::fillBodyFrame($value);
           break;
+
         case self::FIELD_IMAGE:
           self::attachImage($value);
           break;
+
         case self::FIELD_ALT:
           self::fillAltField($value);
           break;
+
         default:
           throw new CWContextException("The field {$field} does not exist on this page.");
       }
@@ -228,19 +232,19 @@ class ArticleContext extends PageContext {
    * @Given I verify the structure of the Create Article page
    */
   public function iVerifyTheStructureOfTheCreateArticlePage() {
-    self::verifyFields($this->article_page->getAllFields());
-    self::verifyFrames($this->article_page->getAllFrames());
-    self::verifyButtons($this->article_page->getAllCreateButtons());
+    self::verifyFields($this->articlePage->getAllFields());
+    self::verifyFrames($this->articlePage->getAllFrames());
+    self::verifyButtons($this->articlePage->getAllCreateButtons());
   }
 
   /**
    * @Given I verify the structure of the Edit Article page
    */
   public function iVerifyTheStructureOfTheEditArticlePage() {
-    self::verifyFields($this->article_page->getAllFields());
-    self::verifyFrames($this->article_page->getAllFrames());
-    self::verifyButtons($this->article_page->getAllEditButtons());
-    self::verifyLinks($this->article_page->getAllEditLinks());
+    self::verifyFields($this->articlePage->getAllFields());
+    self::verifyFrames($this->articlePage->getAllFrames());
+    self::verifyButtons($this->articlePage->getAllEditButtons());
+    self::verifyLinks($this->articlePage->getAllEditLinks());
   }
 
   /**
@@ -252,16 +256,16 @@ class ArticleContext extends PageContext {
       $value = trim($value['VALUE']);
 
       if ($field == self::FIELD_TITLE) {
-        $this->helper_context->iCanSeeInTheRegion($this->article_page_title, $this->article_page->getRegion('VIEW_TITLE'));
+        $this->helperContext->iCanSeeInTheRegion($this->articlePageTitle, $this->articlePage->getRegion('VIEW_TITLE'));
       }
       if ($field == self::FIELD_BODY) {
-        $this->helper_context->iCanSeeInTheRegion($value, $this->article_page->getRegion('VIEW_BODY'));
+        $this->helperContext->iCanSeeInTheRegion($value, $this->articlePage->getRegion('VIEW_BODY'));
       }
       if ($field == self::FIELD_IMAGE) {
-        $this->helper_context->minkContext->assertElementOnPage($this->article_page->getRegion('VIEW_IMAGE'));
+        $this->helperContext->minkContext->assertElementOnPage($this->articlePage->getRegion('VIEW_IMAGE'));
       }
       if ($field == self::FIELD_ALT) {
-        $this->helper_context->iCanSeeTheValueInTheHTML($value);
+        $this->helperContext->iCanSeeTheValueInTheHTML($value);
       }
     }
   }
@@ -270,31 +274,31 @@ class ArticleContext extends PageContext {
    * @Given I delete the article
    */
   public function iDeleteTheArticle() {
-    $this->helper_context->getSession()
+    $this->helperContext->getSession()
       ->getPage()
-      ->pressButton($this->article_page->getEditLink('DELETE'));
+      ->pressButton($this->articlePage->getEditLink('DELETE'));
   }
 
   /**
    * @Given I verify that the article was created successfully
    */
   public function iVerifyThatTheArticleWasCreatedSuccessfully() {
-    $this->helper_context->iCanSeeInTheRegion('Article ' . $this->article_page_title . ' has been created.', $this->article_page->getMessageRegion(self::REGION_SUCCESS_MESSAGE));
-    $this->article_node_id = $this->helper_context->getNodeIDFromEDITLink();
+    $this->helperContext->iCanSeeInTheRegion('Article ' . $this->articlePageTitle . ' has been created.', $this->articlePage->getMessageRegion(self::REGION_SUCCESS_MESSAGE));
+    $this->articleNodeId = $this->helperContext->getNodeIDFromEDITLink();
   }
 
   /**
    * @Given I verify that the article was edited successfully
    */
   public function iVerifyThatTheArticleWasEditedSuccessfully() {
-    $this->helper_context->iCanSeeInTheRegion('Article ' . $this->article_page_title . ' has been updated.', $this->article_page->getMessageRegion(self::REGION_SUCCESS_MESSAGE));
+    $this->helperContext->iCanSeeInTheRegion('Article ' . $this->articlePageTitle . ' has been updated.', $this->articlePage->getMessageRegion(self::REGION_SUCCESS_MESSAGE));
   }
 
   /**
    * @Given I verify that the article was deleted successfully
    */
   public function iVerifyThatTheArticleWasDeletedSuccessfully() {
-    $this->helper_context->iCanSeeInTheRegion('The Article ' . $this->article_page_title . ' has been deleted.', $this->article_page->getMessageRegion(self::REGION_SUCCESS_MESSAGE));
+    $this->helperContext->iCanSeeInTheRegion('The Article ' . $this->articlePageTitle . ' has been deleted.', $this->articlePage->getMessageRegion(self::REGION_SUCCESS_MESSAGE));
   }
 
   /**

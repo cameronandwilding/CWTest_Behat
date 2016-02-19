@@ -7,29 +7,33 @@
 
 namespace ProjectFiles\Util;
 
+/**
+ * Class ArticlePage
+ * @package ProjectFiles\Util
+ */
 class ArticlePage {
 
   /**
    * The path to the Article Content Type.
    *
-   * @var string $path
+   * @var string
    */
   private $path = '/node/add/article';
 
   /**
    * Fields visble in Create and Edit mode.
    *
-   * @var array $fields
+   * @var array
    */
   private $fields = array(
     'TITLE' => 'edit-title-0-value',
-    'IMAGE' => 'edit-field-image-0-upload'
+    'IMAGE' => 'edit-field-image-0-upload',
   );
 
   /**
    * Fields hidden in Create and Edit mode.
    *
-   * @var array $hidden_fields
+   * @var array
    */
   private $hidden_fields = array(
     'ALT' => 'edit-field-image-0-alt'
@@ -38,7 +42,7 @@ class ArticlePage {
   /**
    * Frames available in Create and Edit mode.
    *
-   * @var array $frames
+   * @var array
    */
   private $frames = array(
     'BODY' => 'cke_edit-body-0-value'
@@ -47,30 +51,30 @@ class ArticlePage {
   /**
    * Buttons visible in Create mode.
    *
-   * @var array $create_buttons
+   * @var array
    */
   private $create_buttons = array(
     'SAVE_AND_PUBLISH' => 'Save and publish',
     'SAVE_AS_UNPUBLISHED' => 'Save as unpublished',
-    'PREVIEW' => 'Preview'
+    'PREVIEW' => 'Preview',
   );
 
   /**
    * Buttons visible in Edit mode.
    *
-   * @var array $edit_buttons
+   * @var array
    */
   private $edit_buttons = array(
     'REMOVE' => 'Remove',
     'SAVE_AND_KEEP_PUBLISHED' => 'Save and keep published',
     'SAVE_AND_UNPUBLISH' => 'Save and unpublish',
-    'PREVIEW' => 'Preview'
+    'PREVIEW' => 'Preview',
   );
 
   /**
    * Links visible in Edit mode.
    *
-   * @var array $edit_buttons
+   * @var array
    */
   private $edit_links = array(
     'DELETE' => 'Delete'
@@ -79,18 +83,18 @@ class ArticlePage {
   /**
    * Content regions visible in View mode.
    *
-   * @var array $view_regions
+   * @var array
    */
   private $regions = array(
     'VIEW_TITLE' => '.field--name-title',
     'VIEW_BODY' => '.layout-content-wrapper',
-    'VIEW_IMAGE' => '.image-style-large'
+    'VIEW_IMAGE' => '.image-style-large',
   );
 
   /**
    * Message regions in View mode.
    *
-   * @var array $message_regions
+   * @var array
    */
   private $message_regions = array(
     'SUCCESS_MESSAGE_REGION' => '.messages.messages--status'
@@ -118,8 +122,6 @@ class ArticlePage {
    * Gets a specific field.
    *
    * @param string $field
-   *   The field.
-   *
    * @return string
    */
   public function getField($field) {
@@ -139,8 +141,6 @@ class ArticlePage {
    * Gets a specific hidden field.
    *
    * @param string $hidden_field
-   *   The hidden field.
-   *
    * @return string
    */
   public function getHiddenField($hidden_field) {
@@ -160,8 +160,6 @@ class ArticlePage {
    * Gets a specific create button.
    *
    * @param string $button
-   *   The button.
-   *
    * @return string
    */
   public function getCreateButton($button) {
@@ -181,8 +179,6 @@ class ArticlePage {
    * Gets a specific create button.
    *
    * @param string $button
-   *   The button.
-   *
    * @return string
    */
   public function getEditButton($button) {
@@ -193,8 +189,6 @@ class ArticlePage {
    * Gets a specific edit link.
    *
    * @param string $link
-   *   The link.
-   *
    * @return string
    */
   public function getEditLink($link) {
@@ -223,8 +217,6 @@ class ArticlePage {
    * Gets a specific region.
    *
    * @param string $region
-   *   The region.
-   *
    * @return string
    */
   public function getRegion($region) {
@@ -235,8 +227,6 @@ class ArticlePage {
    * Gets a specific message region.
    *
    * @param string $region
-   *   The region.
-   *
    * @return string
    */
   public function getMessageRegion($region) {
@@ -256,8 +246,6 @@ class ArticlePage {
    * Gets a specific frame.
    *
    * @param string $frame
-   *   The frame.
-   *
    * @return string
    */
   public function getFrame($frame) {

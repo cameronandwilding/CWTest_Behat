@@ -7,6 +7,10 @@
 
 namespace ProjectFiles\Util;
 
+/**
+ * Class Page
+ * @package ProjectFiles\Util
+ */
 class Page {
 
   /**
@@ -17,7 +21,7 @@ class Page {
     'LOGO' => '.site-logo>a>img',
     'MENU' => '.menu',
     'MENU_ITEMS' => '.menu-item',
-    'ACTIVE_MENU_ITEM' => '.is-active'
+    'ACTIVE_MENU_ITEM' => '.is-active',
   );
 
   /**
@@ -29,7 +33,7 @@ class Page {
     'SOCIAL_LINKS' => '.footer-social-links',
     'TWITTER' => '.icon-twitter',
     'EMAIL' => '.icon-email',
-    'MEETUP' => '.icon-meetup'
+    'MEETUP' => '.icon-meetup',
   );
 
   /**
@@ -45,8 +49,6 @@ class Page {
    * Gets a specific header region.
    *
    * @param string $region
-   *   The region.
-   *
    * @return string
    */
   public function getHeaderRegion($region) {
@@ -66,8 +68,6 @@ class Page {
    * Gets a specific footer region.
    *
    * @param string $region
-   *   The region.
-   *
    * @return string
    */
   public function getFooterRegion($region) {

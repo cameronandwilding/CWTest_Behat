@@ -159,7 +159,8 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
     }
 
     // Remove quotes from the test step name.
-    $failed_test_step = preg_replace('/[^a-zA-Z0-9\-]+/', '_', $scope->getStep()->getText());
+    $failed_test_step = preg_replace('/[^a-zA-Z0-9\-]+/', '_', $scope->getStep()
+      ->getText());
 
     // Set the screenshot location.
     $filePath = $this->parameters['screenshots'];
@@ -330,7 +331,7 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
             }
         })()
 JS;
-    $result =  $this->getSession()->evaluateScript($javascript);
+    $result = $this->getSession()->evaluateScript($javascript);
     return $result;
   }
 
@@ -338,7 +339,7 @@ JS;
    * @Given I assign an id to the nameless frame :frame and switch to it
    * @Given I assign an id to the :number nameless frame :frame and switch to it
    */
-  public function iAssignIDToANamelessFrame($frame, $number=0) {
+  public function iAssignIDToANamelessFrame($frame, $number = 0) {
     $javascript = <<<JS
         (function(){
           var elem = document.getElementById('$frame');
@@ -436,7 +437,9 @@ JS;
    */
   public function iFillInFieldByNameWith($field, $value) {
     $value = self::replace_value($value);
-    $element = $this->getSession()->getPage()->find('data-drupal-selector', $field);
+    $element = $this->getSession()
+      ->getPage()
+      ->find('data-drupal-selector', $field);
     if ($element) {
       $element->setValue($value);
     }
@@ -450,7 +453,9 @@ JS;
    */
   public function iFillInFieldByDataDrupalSelectorWith($field, $value) {
     $value = self::replace_value($value);
-    $element = $this->getSession()->getPage()->find('xpath', './/*[@data-drupal-selector="' . $field . '"]');
+    $element = $this->getSession()
+      ->getPage()
+      ->find('xpath', './/*[@data-drupal-selector="' . $field . '"]');
     if ($element) {
       $element->setValue($value);
     }
@@ -587,9 +592,38 @@ JS;
 
     // Get all the assets matching the $field.
     $assets = $this->getNodesMatchingXpath($dom, $field);
-    if ($assets->length >= 1 ) {
+    if ($assets->length >= 1) {
       throw new CWContextException("This '{$field}' field was located when it should not have been.");
     }
+  }
+
+  /**
+   * @Given I select a random entry from :dropdown dropdown
+   * This function will select a random entry from a dropdown
+   */
+  public function iSelectARandomEntryFromDropdown($dropdown) {
+    $dropdownElement = $this->getSession()->getPage()->findField($dropdown);
+
+    // Get an array of all the entries in the dropdown.
+    $optionElements = $dropdownElement->findAll('xpath', '//option');
+
+    // Get count of entries in dropdown.
+    $count = count($optionElements);
+
+    // Assume we do not want the first entry in the array.
+    // Select a random number from 1 to $count.
+    $value = rand(1, $count - 1);
+
+    // Select a random entry.
+    $random_value_to_select = $optionElements[$value]->getValue();
+
+    // Create xpath string for the dropdown.
+    $strXpath = "//*[@id='" . $dropdown . "']";
+
+    // Select the entry from the dropdown.
+    $this->getSession()
+      ->getDriver()
+      ->selectOption($strXpath, $random_value_to_select);
   }
 
   /*******************************************************************************
@@ -915,11 +949,12 @@ JS;
 
     // Create array of xpath => name for repository building.
     $toBuild = [
-      ["//input[@type='submit']" , 'BUTTON'],
-      ["//input[@type='text']"  , 'TEXTFIELD'],
-      ["//input[@type='password']" , 'PASSWORD'],
-      ["//input[@type='checkbox']" , 'CHECKBOX'],
-      ['//select' , 'DROPDOWN']];
+      ["//input[@type='submit']", 'BUTTON'],
+      ["//input[@type='text']", 'TEXTFIELD'],
+      ["//input[@type='password']", 'PASSWORD'],
+      ["//input[@type='checkbox']", 'CHECKBOX'],
+      ['//select', 'DROPDOWN']
+    ];
 
     // Run array through buildObjects() function.
     foreach ($toBuild as $toBuildRecord) {
