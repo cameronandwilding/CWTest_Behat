@@ -9,7 +9,7 @@ Feature: Login page
 #########################################################################################
 
   @login @api @smoke @setup
-  Scenario: Verify the structure of the login page
+  Scenario: Verify the login page is accessible
     Given I visit the Login page
 
 
