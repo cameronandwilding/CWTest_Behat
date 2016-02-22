@@ -5,11 +5,11 @@
  * Class Page describes the objects on general pages.
  */
 
-namespace ProjectFiles\Util;
+namespace CWTest\Util;
 
 /**
  * Class Page
- * @package ProjectFiles\Util
+ * @package CWTest\Util
  */
 class Page {
 

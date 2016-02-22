@@ -5,11 +5,11 @@
  * Class MyAccountPage describes the objects on the my account page.
  */
 
-namespace ProjectFiles\Util;
+namespace CWTest\Util;
 
 /**
  * Class MyAccountPage
- * @package ProjectFiles\Util
+ * @package CWTest\Util
  */
 class MyAccountPage {
   /**

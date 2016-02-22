@@ -5,9 +5,9 @@
  * Class MyAccountContext implements the behavior for my account pages.
  */
 
-namespace ProjectFiles\Context;
+namespace CWTest\Context;
 
-use ProjectFiles\Util\MyAccountPage;
+use CWTest\Util\MyAccountPage;
 
 class MyAccountContext extends PageContext {
 

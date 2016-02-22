@@ -5,13 +5,13 @@
  * Class PageContext implements the behavior for general pages.
  */
 
-namespace ProjectFiles\Context;
+namespace CWTest\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use PHPUnit_Framework_Assert as Assertions;
 use CWTest\Context\HelperContext;
-use ProjectFiles\Util\Page;
+use CWTest\Util\Page;
 
 class PageContext implements Context {
 

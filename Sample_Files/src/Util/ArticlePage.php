@@ -5,11 +5,11 @@
  * Class ArticlePage describes the objects on the article page.
  */
 
-namespace ProjectFiles\Util;
+namespace CWTest\Util;
 
 /**
  * Class ArticlePage
- * @package ProjectFiles\Util
+ * @package CWTest\Util
  */
 class ArticlePage {
 

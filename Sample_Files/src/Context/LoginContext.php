@@ -5,9 +5,9 @@
  * Class LoginContext implements the behavior for login pages.
  */
 
-namespace ProjectFiles\Context;
+namespace CWTest\Context;
 
-use ProjectFiles\Util\LoginPage;
+use CWTest\Util\LoginPage;
 use CWTest\Exception\CWContextException;
 
 class LoginContext extends PageContext  {

@@ -5,11 +5,11 @@
  * Class LoginPage describes the objects on the login page.
  */
 
-namespace ProjectFiles\Util;
+namespace CWTest\Util;
 
 /**
  * Class LoginPage
- * @package ProjectFiles\Util
+ * @package CWTest\Util
  */
 class LoginPage extends Page {
 
