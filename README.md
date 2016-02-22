@@ -10,7 +10,6 @@
 
 
 ##INITIAL SET-UP
-================
 
 1. Select a location for the framework
 --------------------------------------
@@ -88,7 +87,6 @@ You should see `1 scenarios (1 passed)` in the terminal window after 15-20 secon
 
 
 ##ONBOARDING TO A PROJECT
-=========================
 
 1. Install via [Composer](https://getcomposer.org/)
 ---------------------------------------------------
@@ -142,7 +140,6 @@ You should see `1 scenarios (1 passed)` in the terminal window after 15-20 secon
 
 
 ##ONGOING UPDATE
-================
 
 1. Update via [Composer](https://getcomposer.org/)
 ---------------------------------------------------
