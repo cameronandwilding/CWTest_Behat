@@ -18,7 +18,7 @@ Create a `composer.json` file in the test folder root.
   },
   "autoload": {
     "psr-4": {
-      "ProjectFiles\\": "src/"
+      "CWTest\\": "src/"
     }
   }
 }

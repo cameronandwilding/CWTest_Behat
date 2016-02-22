@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Class ArticleContext implements the behavior for article pages.
+ * Class ArticleContext implements the behavior for Article pages.
  */
 
 namespace CWTest\Context;
