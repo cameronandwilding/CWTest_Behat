@@ -2,23 +2,23 @@
 
 /**
  * @file
- * Class SamplePage describes the objects on the sample page.
+ * Class ArticlePage describes the objects on the article page.
  */
 
 namespace CWTest\Util;
 
 /**
- * Class SamplePage
+ * Class ArticlePage
  * @package CWTest\Util
  */
-class SamplePage {
+class ArticlePage {
 
   /**
-   * The path to the Sample Content Type.
+   * The path to the Article Content Type.
    *
    * @var string
    */
-  private $path = '/node/add/sample';
+  private $path = '/node/add/article';
 
   /**
    * Fields visble in Create and Edit mode.
