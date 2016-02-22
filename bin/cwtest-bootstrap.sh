@@ -12,3 +12,4 @@ wget http://selenium-release.storage.googleapis.com/2.49/selenium-server-standal
 # Copy over the sample files directory.
 BIN_DIR="$(dirname $(readlink $BASH_SOURCE))"
 cp -nR ${BIN_DIR}/../Sample_Files/* ./../
+cp -nR ${BIN_DIR}/../README.md ./../

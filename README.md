@@ -1,11 +1,16 @@
 #SETUP & EXECUTION 
 
+If you are the first person on the project to install this framework, please complete all of the steps below.
+
+If you are only updating the framework, please start at step 3.
+
+
 1. Select a location for the framework
 --------------------------------------
 Create a folder, ideally in a Test folder in your project, outside your Drupal webroot.
 
 
-2. Install via [Composer](https://getcomposer.org/)
+2. Create a composer JSON file [Composer](https://getcomposer.org/)
 ---------------------------------------------------
 Create a `composer.json` file in the test folder root.
 ```
@@ -24,7 +29,9 @@ Create a `composer.json` file in the test folder root.
 }
 ```
 
-Then run:
+3. Install via [Composer](https://getcomposer.org/)
+---------------------------------------------------
+From the Test folder created st step 1, run:
 
 ```
 composer install
