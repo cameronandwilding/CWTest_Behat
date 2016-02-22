@@ -1,11 +1,12 @@
 #GUIDE
-|What do you want to do?|Link|
-|-------------| -----|
-|If you are the first person on the project to install this framework, please complete the initial set-up steps|[Initial Set-up](#initial-set-up)|
-|If the framework is already part of your project repo, please complete the onboarding steps|[Onbording to a project](#onboarding-to-a-project)|
-|If you are only updating the framework, please complete the ongoing update steps|[Ongoing Update](#ongoing-update)|
-|How to run tests?|[Test Execution](#test-execution)|
-|Where to view test results?|[Behat test writing process](#behat-test-writing-process)|
+
+|Link|What do you want to do?|
+|-----|----------|
+|[Initial Set-up](#initial-set-up)|If you are the first person on the project to install this framework, please complete the initial set-up steps|
+|[Onbording to a project](#onboarding-to-a-project)|If the framework is already part of your project repo, please complete the onboarding steps|
+|[Ongoing Update](#ongoing-update)|If you are only updating the framework, please complete the ongoing update steps|
+|[Test Execution](#test-execution)|How to run tests?|
+|[Behat test writing process](#behat-test-writing-process)|Where to view test results?|
 
 
 ##INITIAL SET-UP
