@@ -1,11 +1,23 @@
-#SETUP & EXECUTION 
+#GUIDE
+
+|Link|What do you want to do?|
+|-----|----------|
+|[Initial Set-up](#initial-set-up)|If you are the first person on the project to install this framework, please complete the initial set-up steps|
+|[Onbording to a project](#onboarding-to-a-project)|If the framework is already part of your project repo, please complete the onboarding steps|
+|[Ongoing Update](#ongoing-update)|If you are only updating the framework, please complete the ongoing update steps|
+|[Test Execution](#test-execution)|How to run tests?|
+|[Test Results](#test-results)|Where to find the test results?|
+|[Behat test writing process](#behat-test-writing-process)|How to write new tests?|
+
+
+##INITIAL SET-UP
 
 1. Select a location for the framework
 --------------------------------------
 Create a folder, ideally in a Test folder in your project, outside your Drupal webroot.
 
 
-2. Install via [Composer](https://getcomposer.org/)
+2. Create a composer JSON file [Composer](https://getcomposer.org/)
 ---------------------------------------------------
 Create a `composer.json` file in the test folder root.
 ```
@@ -24,30 +36,32 @@ Create a `composer.json` file in the test folder root.
 }
 ```
 
-Then run:
+3. Install via [Composer](https://getcomposer.org/)
+---------------------------------------------------
+From the Test folder created st step 1, run:
 
 ```
 composer install
 ```
 
-3. Install the framework
-------------------------
+4. Create the Behat folder structure
+------------------------------------
 Run the bootstrap shell script:
 
 ```
 cd bin && ./cwtest-bootstrap.sh
 ```
 
-### Update your local configuration
-
+5. Update your local configuration
+------------------------------------
 Inside `/Behat/behat.local.yml`, update:
 
 * the `base_url` to your local site url
-
 * the `drupal_root` value to the path to your local drupal installation.
 
 
-### 3a. Optional Step
+6. Configure Chrome - Optional Step
+-----------------------------------
 This is only required if you want to run tests on Chrome.
 
 (By default, Firefox works out-of-the-box.)
@@ -56,7 +70,7 @@ This is only required if you want to run tests on Chrome.
 2. Save it to `/usr/local/bin`
 
 
-4. Verify Setup Successful
+7. Verify Setup Successful
 --------------------------
 Navigate to:
 
@@ -73,8 +87,80 @@ Execute the following:
 You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
-Test Execution
-==============
+##ONBOARDING TO A PROJECT
+
+1. Install via [Composer](https://getcomposer.org/)
+---------------------------------------------------
+From the project Test folder, run:
+
+```
+composer install
+```
+
+2. Create the Behat folder structure
+------------------------------------
+Run the bootstrap shell script:
+
+```
+cd bin && ./cwtest-bootstrap.sh
+```
+
+3. Update your local configuration
+------------------------------------
+Inside `/Behat/behat.local.yml`, update:
+
+* the `base_url` to your local site url
+* the `drupal_root` value to the path to your local drupal installation.
+
+
+4. Configure Chrome - Optional Step
+-----------------------------------
+This is only required if you want to run tests on Chrome.
+
+(By default, Firefox works out-of-the-box.)
+
+1. Download chromedriver from `http://chromedriver.storage.googleapis.com/index.html?path=2.17/`
+2. Save it to `/usr/local/bin`
+
+
+5. Verify Setup Successful
+--------------------------
+Navigate to:
+
+```
+/Behat
+```
+
+Execute the following:
+
+```
+./run-behat.sh setup firefox
+```
+
+You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
+
+
+##ONGOING UPDATE
+
+1. Update via [Composer](https://getcomposer.org/)
+---------------------------------------------------
+From the project Test folder, run:
+
+```
+composer update
+```
+
+2. Update the Behat folder structure
+------------------------------------
+Run the bootstrap shell script:
+
+```
+cd bin && ./cwtest-bootstrap.sh
+```
+
+
+##Test Execution
+
 Navigate to:
 
 ```
@@ -93,13 +179,12 @@ or
 ./run-behat.sh regression chrome
 ```
 
-Test Results
-============
+##Test Results
+
 The results of all tests will be stored in `/Results/Behat/Twig_***.html`
 
 
-BEHAT TEST WRITING PROCESS
-==========================
+##Behat test writing process
 
 It is a good idea to read through the LOGIN feature, page, and context files while reading through the following descriptions.
 
