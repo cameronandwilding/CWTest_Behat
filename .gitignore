@@ -1,6 +1,6 @@
-# Ignore cache/phpStorm generated files
-.idea
-
-# Ignore files/directories created by installs
+bin
+Results
+Servers
 vendor
-cache
+Behat/behat.local.yml
+Behat/run-behat.sh
