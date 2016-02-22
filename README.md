@@ -1,10 +1,14 @@
-If you are the first person on the project to install this framework, please complete the [INITIAL SET-UP](#initial-set-up) steps.
+#GUIDE
 
-If the framework is already part of your project repo, please complete the [ONBOARDING TO A PROJECT](#onboarding-to-a-project) steps.
+|If you are the first person on the project to install this framework, please complete the initial set-up steps|[Initial Set-up](#initial-set-up)|
+|If the framework is already part of your project repo, please complete the onboarding steps|[Onbording to a project](#onboarding-to-a-project)|
+|If you are only updating the framework, please complete the ongoing update steps|[Ongoing Update](#ongoing-update)|
+|How to run tests|[Test Execution](#test-execution)|
+|Where to view test tests|[Behat test writing process](#behat-test-writing-process)|
 
-If you are only updating the framework, please complete the [ONGOING UPDATE](#ongoing-update) steps.
 
-#INITIAL SET-UP
+##INITIAL SET-UP
+================
 
 1. Select a location for the framework
 --------------------------------------
@@ -81,7 +85,8 @@ Execute the following:
 You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
-#ONBOARDING TO A PROJECT
+##ONBOARDING TO A PROJECT
+=========================
 
 1. Install via [Composer](https://getcomposer.org/)
 ---------------------------------------------------
@@ -134,9 +139,10 @@ Execute the following:
 You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
-#ONGOING UPDATE
+##ONGOING UPDATE
+================
 
-1. Install via [Composer](https://getcomposer.org/)
+1. Update via [Composer](https://getcomposer.org/)
 ---------------------------------------------------
 From the project Test folder, run:
 
@@ -153,8 +159,8 @@ cd bin && ./cwtest-bootstrap.sh
 ```
 
 
-Test Execution
-==============
+##Test Execution
+================
 Navigate to:
 
 ```
@@ -173,13 +179,13 @@ or
 ./run-behat.sh regression chrome
 ```
 
-Test Results
-============
+##Test Results
+==============
 The results of all tests will be stored in `/Results/Behat/Twig_***.html`
 
 
-BEHAT TEST WRITING PROCESS
-==========================
+##Behat test writing process
+============================
 
 It is a good idea to read through the LOGIN feature, page, and context files while reading through the following descriptions.
 
