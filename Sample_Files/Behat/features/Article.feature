@@ -1,151 +1,151 @@
-Feature: Sample page
-  In order to test the Sample Content type
+Feature: Article page
+  In order to test the Article Content type
   As a variety of users
-  I need to verify the Sample page structure and functionality
+  I need to verify the Article page structure and functionality
 
 
 #########################################################################################
 ###  VALIDATE LAYOUT AND MANDATORY FIELDS
 #########################################################################################
 
-  @sample @api @javascript
-  Scenario: Verify the structure of the Create Sample page
+  @article @api @javascript
+  Scenario: Verify the structure of the Create Article page
     Given I am logged in as a user with the administrator role
-    And I visit the Create Sample page
-    Then I verify the structure of the Create Sample page
+    And I visit the Create Article page
+    Then I verify the structure of the Create Article page
 
-  @sample @api @javascript
-  Scenario: Verify the structure of the Edit Sample page
+  @article @api @javascript
+  Scenario: Verify the structure of the Edit Article page
     Given I am logged in as a user with the administrator role
-    And I visit the Create Sample page
-    When I enter the following values on the Create Sample page
+    And I visit the Create Article page
+    When I enter the following values on the Create Article page
       | FIELD | VALUE                        |
-      | TITLE | Sample Title <alpha_number> |
+      | TITLE | Article Title <alpha_number> |
     And I press save and publish
-    And I verify that the sample was created successfully
-    When I visit the Edit Sample page
-    Then I verify the structure of the Edit Sample page
+    And I verify that the article was created successfully
+    When I visit the Edit Article page
+    Then I verify the structure of the Edit Article page
 
-  @sample @api
-  Scenario: Validation rules on Create Sample
+  @article @api
+  Scenario: Validation rules on Create Article
     Given I am logged in as a user with the administrator role
-    And I visit the Create Sample page
-    When I enter the following values on the Create Sample page
+    And I visit the Create Article page
+    When I enter the following values on the Create Article page
       | FIELD | VALUE |
       | TITLE |       |
     And I press save and publish
-    Then I am still on the Create Sample page
+    Then I am still on the Create Article page
 
-  @sample @api
-  Scenario: Validation rules on Edit Sample
+  @article @api
+  Scenario: Validation rules on Edit Article
     Given I am logged in as a user with the administrator role
-    And I visit the Create Sample page
-    When I enter the following values on the Create Sample page
+    And I visit the Create Article page
+    When I enter the following values on the Create Article page
       | FIELD | VALUE                        |
-      | TITLE | Sample Title <alpha_number> |
+      | TITLE | Article Title <alpha_number> |
     And I press save and publish
-    And I verify that the sample was created successfully
-    And I visit the Edit Sample page
-    And I enter the following values on the Edit Sample page
+    And I verify that the article was created successfully
+    And I visit the Edit Article page
+    And I enter the following values on the Edit Article page
       | FIELD | VALUE |
       | TITLE |       |
     When I press save and keep published
-    Then I am still on the Edit Sample page
+    Then I am still on the Edit Article page
 
 
 #########################################################################################
 ###  CREATE SAMPLE
 #########################################################################################
 
-  @sample @api
-  Scenario: Create an Sample
+  @article @api
+  Scenario: Create an Article
     Given I am logged in as a user with the administrator role
-    Then I am able to create an sample content
+    Then I am able to create an article content
 
-  @sample @api @javascript
-  Scenario: Create an Sample with generic values
+  @article @api @javascript
+  Scenario: Create an Article with generic values
     Given I am logged in as a user with the administrator role
-    And I visit the Create Sample page
-    Then I complete the Create Sample page with generic valid data
+    And I visit the Create Article page
+    Then I complete the Create Article page with generic valid data
     And I press save and publish
 
-  @sample @api @javascript
-  Scenario: Create an Sample with specified values
+  @article @api @javascript
+  Scenario: Create an Article with specified values
     Given I am logged in as a user with the administrator role
-    And I visit the Create Sample page
-    When I enter the following values on the Create Sample page
+    And I visit the Create Article page
+    When I enter the following values on the Create Article page
       | FIELD | VALUE                                 |
-      | TITLE | Sample Title <alpha_number>          |
-      | BODY  | This is the body text of the Sample. |
+      | TITLE | Article Title <alpha_number>          |
+      | BODY  | This is the body text of the Article. |
       | IMAGE | 150x350.jpg                           |
       | ALT   | ALT - 150x350.jpg                     |
     And I press save and publish
-    Then I verify that the sample was created successfully
+    Then I verify that the article was created successfully
 
 
 #########################################################################################
 ###  EDIT SAMPLE
 #########################################################################################
 
-  @sample @api
-  Scenario: Edit an Sample
+  @article @api
+  Scenario: Edit an Article
     Given I am logged in as a user with the administrator role
-    Then I am able to edit an sample content
+    Then I am able to edit an article content
 
-  @sample @api
-  Scenario: Create and Edit an Sample with specified values
+  @article @api
+  Scenario: Create and Edit an Article with specified values
     Given I am logged in as a user with the administrator role
-    And I visit the Create Sample page
-    When I enter the following values on the Create Sample page
+    And I visit the Create Article page
+    When I enter the following values on the Create Article page
       | FIELD | VALUE                        |
-      | TITLE | Sample Title <alpha_number> |
+      | TITLE | Article Title <alpha_number> |
     And I press save and publish
-    And I verify that the sample was created successfully
-    Then I visit the Edit Sample page
-    And I enter the following values on the Edit Sample page
+    And I verify that the article was created successfully
+    Then I visit the Edit Article page
+    And I enter the following values on the Edit Article page
       | FIELD | VALUE                               |
-      | TITLE | Sample Title <alpha_number> edited |
+      | TITLE | Article Title <alpha_number> edited |
     And I press save and keep published
-    And I verify that the sample was edited successfully
+    And I verify that the article was edited successfully
 
 
 #########################################################################################
 ###  DELETE SAMPLE
 #########################################################################################
 
-  @sample @api
-  Scenario: Create and Delete an Sample with specified values
+  @article @api
+  Scenario: Create and Delete an Article with specified values
     Given I am logged in as a user with the administrator role
-    And I visit the Create Sample page
-    When I enter the following values on the Create Sample page
+    And I visit the Create Article page
+    When I enter the following values on the Create Article page
       | FIELD | VALUE                        |
-      | TITLE | Sample Title <alpha_number> |
+      | TITLE | Article Title <alpha_number> |
     And I press save and publish
-    And I verify that the sample was created successfully
-    Then I visit the Delete Sample page
-    And I delete the sample
-    And I verify that the sample was deleted successfully
+    And I verify that the article was created successfully
+    Then I visit the Delete Article page
+    And I delete the article
+    And I verify that the article was deleted successfully
 
 
 #########################################################################################
 ###  VIEW SAMPLE
 #########################################################################################
 
-  @sample @api @javascript
-  Scenario: Create and View an Sample with specified values
+  @article @api @javascript
+  Scenario: Create and View an Article with specified values
     Given I am logged in as a user with the administrator role
-    And I visit the Create Sample page
-    When I enter the following values on the Create Sample page
+    And I visit the Create Article page
+    When I enter the following values on the Create Article page
       | FIELD | VALUE                                 |
-      | TITLE | Sample Title <alpha_number>          |
-      | BODY  | This is the body text of the Sample. |
+      | TITLE | Article Title <alpha_number>          |
+      | BODY  | This is the body text of the Article. |
       | IMAGE | 150x350.jpg                           |
       | ALT   | ALT - 150x350.jpg                     |
     And I press save and publish
-    Then I can see the following values on the View Sample page
+    Then I can see the following values on the View Article page
       | FIELD | VALUE                                 |
-      | TITLE | Sample Title <alpha_number>          |
-      | BODY  | This is the body text of the Sample. |
+      | TITLE | Article Title <alpha_number>          |
+      | BODY  | This is the body text of the Article. |
       | IMAGE | 150x350.jpg                           |
       | ALT   | ALT - 150x350.jpg                     |
     And I verify the 'Image' assets via JS
@@ -157,11 +157,11 @@ Feature: Sample page
 ###  HEADER & FOOTER
 #########################################################################################
 
-  @sample @api
-  Scenario: Verify the Sample page header
+  @article @api
+  Scenario: Verify the Article page header
     Given I am logged in as a user with the administrator role
-    And I am able to create an sample content
+    And I am able to create an article content
     When I am not logged in
-    And I visit the View Sample page
+    And I visit the View Article page
     Then I verify the header
     And I verify the footer
