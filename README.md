@@ -6,7 +6,8 @@
 |[Onbording to a project](#onboarding-to-a-project)|If the framework is already part of your project repo, please complete the onboarding steps|
 |[Ongoing Update](#ongoing-update)|If you are only updating the framework, please complete the ongoing update steps|
 |[Test Execution](#test-execution)|How to run tests?|
-|[Behat test writing process](#behat-test-writing-process)|Where to view test results?|
+|[Test Results](#test-results)|Where to find the test results?|
+|[Behat test writing process](#behat-test-writing-process)|How to write new tests?|
 
 
 ##INITIAL SET-UP
