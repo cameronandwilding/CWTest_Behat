@@ -159,7 +159,7 @@ cd bin && ./cwtest-bootstrap.sh
 
 
 ##Test Execution
-================
+
 Navigate to:
 
 ```
@@ -179,12 +179,11 @@ or
 ```
 
 ##Test Results
-==============
+
 The results of all tests will be stored in `/Results/Behat/Twig_***.html`
 
 
 ##Behat test writing process
-============================
 
 It is a good idea to read through the LOGIN feature, page, and context files while reading through the following descriptions.
 
