@@ -5,31 +5,35 @@
  * Class LoginPage describes the objects on the login page.
  */
 
-namespace ProjectFiles\Util;
+namespace CWTest\Util;
 
+/**
+ * Class LoginPage
+ * @package CWTest\Util
+ */
 class LoginPage extends Page {
 
   /**
    * The path to the Login page.
    *
-   * @var string $path
+   * @var string
    */
   private $path = '/user/login';
 
   /**
    * Fields visible on Login screen.
    *
-   * @var array $fields
+   * @var array
    */
   private $fields = array(
     'USERNAME' => 'edit-name',
-    'PASSWORD' => 'edit-pass'
+    'PASSWORD' => 'edit-pass',
   );
 
   /**
    * Buttons visible on Login screen.
    *
-   * @var array $buttons
+   * @var array
    */
   private $buttons = array(
     'LOG_IN' => 'edit-submit'
@@ -38,7 +42,7 @@ class LoginPage extends Page {
   /**
    * Regions visible on Login screen.
    *
-   * @var array $regions
+   * @var array
    */
   private $regions = array(
     'USER_LOGIN_FORM' => '#user-login-form'
@@ -47,7 +51,7 @@ class LoginPage extends Page {
   /**
    * Message regions visible on Login screen.
    *
-   * @var array $message_regions
+   * @var array
    */
   private $message_regions = array(
     'LOGIN_FAILURE' => '.messages.messages--error'
@@ -75,8 +79,6 @@ class LoginPage extends Page {
    * Gets a specific field.
    *
    * @param string $field
-   *   The field.
-   *
    * @return string
    */
   public function getField($field) {
@@ -96,8 +98,6 @@ class LoginPage extends Page {
    * Gets a specific button.
    *
    * @param string $button
-   *   The button.
-   *
    * @return string
    */
   public function getButton($button) {
@@ -117,8 +117,6 @@ class LoginPage extends Page {
    * Gets a region.
    *
    * @param string $region
-   *   The region.
-   *
    * @return string
    */
   public function getRegion($region) {
@@ -129,8 +127,6 @@ class LoginPage extends Page {
    * Gets a specific message region.
    *
    * @param string $region
-   *   The region
-   *
    * @return string
    */
   public function getMessageRegion($region) {

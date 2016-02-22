@@ -5,27 +5,31 @@
  * Class MyAccountPage describes the objects on the my account page.
  */
 
-namespace ProjectFiles\Util;
+namespace CWTest\Util;
 
+/**
+ * Class MyAccountPage
+ * @package CWTest\Util
+ */
 class MyAccountPage {
   /**
-   * @var string $path
+   * @var string
    */
   public $path = '/user';
 
   /**
-   * @var array $fields
+   * @var array
    */
   private $fields = array();
 
   /**
-   * @var array $regions
+   * @var array
    */
   private $regions = array(
     'HEADER' => '.header-content',
     'TOOLBAR' => '#toolbar-bar',
     'CONTENT' => '.layout-content',
-    'FOOTER' => '.layout-container>footer'
+    'FOOTER' => '.layout-container>footer',
   );
 
   /**
@@ -50,8 +54,6 @@ class MyAccountPage {
    * Gets a specific field.
    *
    * @param string $field
-   *   The field.
-   *
    * @return string
    */
   public function getField($field) {
@@ -71,8 +73,6 @@ class MyAccountPage {
    * Gets a specific region.
    *
    * @param string $region
-   *   The region.
-   *
    * @return string
    */
   public function getRegion($region) {
