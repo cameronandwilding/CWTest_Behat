@@ -626,6 +626,46 @@ JS;
       ->selectOption($strXpath, $random_value_to_select);
   }
 
+  /**
+   * @Given I verify that value :value is not present in :dropdown dropdown
+   */
+  public function iVerifyThatValueIsNotPresentInDropdown($value, $dropdown) {
+    //  Get the HTML of the dropdown
+    $sectionDropDownHTML = $this->minkContext->getSession()
+      ->getPage()
+      ->findById($dropdown)
+      ->getHtml();
+
+    // Get all the dropdown options between > and <.
+    preg_match_all("/\>(.*?)\</", $sectionDropDownHTML, $match);
+    $dropdownOptions = ($match[1]);
+
+    //  Check if $value is listed in $dropdownOptions.
+    if (in_array($value, $dropdownOptions)) {
+      throw new CWContextException("The value {$value} was present in the dropdown");
+    }
+  }
+
+  /**
+   * @Given I verify that value :value is present in :dropdown dropdown
+   */
+  public function iVerifyThatValueIsPresentInDropdown($value, $dropdown) {
+    //  Get the HTML of the dropdown
+    $sectionDropDownHTML = $this->minkContext->getSession()
+      ->getPage()
+      ->findById($dropdown)
+      ->getHtml();
+
+    // Get all the dropdown options between > and <.
+    preg_match_all("/\>(.*?)\</", $sectionDropDownHTML, $match);
+    $dropdownOptions = ($match[1]);
+
+    //  Check if $value is listed in $dropdownOptions.
+    if (!in_array($value, $dropdownOptions)) {
+      throw new CWContextException("The value {$value} was not present in the dropdown");
+    }
+  }
+
   /*******************************************************************************
    * End of ELEMENT functions.
    *******************************************************************************/
