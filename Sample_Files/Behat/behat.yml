@@ -49,7 +49,7 @@ default:
         log_out: "My account"
     emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
        name: html
-       renderer: Twig
+       renderer: Twig,Behat2
        print_args: true
        print_outp: true
        loop_break: true

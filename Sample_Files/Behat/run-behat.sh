@@ -1,6 +1,13 @@
 #!/bin/sh
 
 ##############################################################################
+###    BACKUP PREVIOUS RESULT FILES
+##############################################################################
+mkdir -p ../Results/Behat/History
+mv ../Results/Behat/*.html ../Results/Behat/History
+
+
+##############################################################################
 ###    GLOBAL VARS
 ##############################################################################
 COMPOSER_BIN=../bin
@@ -70,10 +77,3 @@ if [ $PROFILE = "firefox" ] || [ $PROFILE = "chrome"  ]
 then
    sh $COMPOSER_BIN/stop_selenium_server.sh
 fi
-
-
-##############################################################################
-###    BACKUP RESULT FILES
-##############################################################################
-mkdir -p ../Results/Behat/History
-mv ../Results/Behat/*.html ../Results/Behat/History
