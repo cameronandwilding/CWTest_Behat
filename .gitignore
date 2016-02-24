@@ -4,3 +4,6 @@ Servers
 vendor
 Behat/behat.local.yml
 Behat/run-behat.sh
+Behat/images
+README.md
+.gitignore
