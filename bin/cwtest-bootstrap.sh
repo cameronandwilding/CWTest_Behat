@@ -14,3 +14,4 @@ BIN_DIR="$(dirname $(readlink $BASH_SOURCE))"
 cp -nR ${BIN_DIR}/../Sample_Files/* ./../
 cp -R ${BIN_DIR}/../README.md ./../
 cp -R ${BIN_DIR}/../.gitignore ./../
+cp ${BIN_DIR}/../Sample_Files/Behat/run-behat.sh ./../Behat

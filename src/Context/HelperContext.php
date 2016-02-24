@@ -163,7 +163,11 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
       ->getText());
 
     // Set the screenshot location.
-    $filePath = $this->parameters['screenshot_path'];
+    $featureFolder = str_replace(' ', '', $scope->getFeature()->getTitle());
+    $filePath = $this->parameters['screenshot_path'] . '/' . $featureFolder;
+    if (!file_exists($filePath)) {
+      mkdir($filePath);
+    }
 
     $driver = $this->getSession()->getDriver();
     $filename_prefix = date(self::DATE_FORMAT_CONCISE) . '-' . $failed_test_step;
