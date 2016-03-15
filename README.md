@@ -50,11 +50,12 @@ Run the bootstrap shell script:
 
 ```
 cd bin && ./cwtest-bootstrap.sh
+cd ..
 ```
 
 5. Update your local configuration
 ------------------------------------
-Inside `/Behat/behat.local.yml`, update:
+In your Test folder, inside `Behat/behat.local.yml`, update:
 
 * the `base_url` to your local site url
 * the `drupal_root` value to the path to your local drupal installation.
@@ -62,7 +63,7 @@ Inside `/Behat/behat.local.yml`, update:
 
 6. Configure Chrome - Optional Step
 -----------------------------------
-This is only required if you want to run tests on Chrome.
+This is only required if you want to run tests on Chrome. Skip to step 7 if you don't.
 
 (By default, Firefox works out-of-the-box.)
 
