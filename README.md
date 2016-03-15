@@ -55,7 +55,7 @@ cd ..
 
 5. Update your local configuration
 ------------------------------------
-In your Test folder, inside `Behat/behat.local.yml`, update:
+In your Test folder, edit `Behat/behat.local.yml`. Update:
 
 * the `base_url` to your local site url
 * the `drupal_root` value to the path to your local drupal installation.
@@ -73,10 +73,10 @@ This is only required if you want to run tests on Chrome. Skip to step 7 if you 
 
 7. Verify Setup Successful
 --------------------------
-Navigate to:
+Navigate to the Behat folder inside your Test folder:
 
 ```
-/Behat
+cd Behat
 ```
 
 Execute the following:
@@ -85,7 +85,7 @@ Execute the following:
 ./run-behat.sh setup firefox
 ```
 
-You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
+Selenium will launch and run a test. You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
 ##ONBOARDING TO A PROJECT
@@ -104,11 +104,12 @@ Run the bootstrap shell script:
 
 ```
 cd bin && ./cwtest-bootstrap.sh
+cd ..
 ```
 
 3. Update your local configuration
 ------------------------------------
-Inside `/Behat/behat.local.yml`, update:
+In your Test folder, edit `Behat/behat.local.yml`. Update:
 
 * the `base_url` to your local site url
 * the `drupal_root` value to the path to your local drupal installation.
@@ -116,7 +117,7 @@ Inside `/Behat/behat.local.yml`, update:
 
 4. Configure Chrome - Optional Step
 -----------------------------------
-This is only required if you want to run tests on Chrome.
+This is only required if you want to run tests on Chrome. Skip to step 7 if you don't.
 
 (By default, Firefox works out-of-the-box.)
 
@@ -126,10 +127,10 @@ This is only required if you want to run tests on Chrome.
 
 5. Verify Setup Successful
 --------------------------
-Navigate to:
+Navigate to the Behat folder inside your Test folder:
 
 ```
-/Behat
+cd Behat
 ```
 
 Execute the following:
@@ -138,7 +139,7 @@ Execute the following:
 ./run-behat.sh setup firefox
 ```
 
-You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
+Selenium will launch and run a test. You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
 ##ONGOING UPDATE
@@ -157,15 +158,16 @@ Run the bootstrap shell script:
 
 ```
 cd bin && ./cwtest-bootstrap.sh
+cd ..
 ```
 
 
 ##Test Execution
 
-Navigate to:
+Navigate to the Behat folder inside your Test folder:
 
 ```
-/Behat
+cd Behat
 ```
 
 To execute all of the tests, select one of the following options based on the format `./run-behat.sh [tag] [profile]`:
