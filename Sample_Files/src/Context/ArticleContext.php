@@ -19,10 +19,6 @@ class ArticleContext extends PageContext {
   const FIELD_IMAGE = 'IMAGE';
   const FIELD_ALT = 'ALT';
 
-  // Buttons.
-  const BUTTON_SAVE_AND_PUBLISH = 'SAVE_AND_PUBLISH';
-  const BUTTON_SAVE_AND_KEEP_PUBLISHED = 'SAVE_AND_KEEP_PUBLISHED';
-
   //  Regions.
   const REGION_SUCCESS_MESSAGE = 'SUCCESS_MESSAGE_REGION';
 
@@ -97,24 +93,6 @@ class ArticleContext extends PageContext {
   }
 
   /**
-   * @Given I press save and publish
-   */
-  public function iPressSaveAndPublish() {
-    $this->helperContext->getSession()
-      ->getPage()
-      ->pressButton($this->articlePage->getCreateButton(self::BUTTON_SAVE_AND_PUBLISH));
-  }
-
-  /**
-   * @Given I press save and keep published
-   */
-  public function iPressSaveAndKeepPublished() {
-    $this->helperContext->getSession()
-      ->getPage()
-      ->pressButton($this->articlePage->getEditButton(self::BUTTON_SAVE_AND_KEEP_PUBLISHED));
-  }
-
-  /**
    * @Given I complete the Create Article page with generic valid data
    */
   public function fillInArticleContentWithGenericValidData() {
@@ -124,6 +102,20 @@ class ArticleContext extends PageContext {
     self::fillAltField('This is some ALT text');
   }
 
+  /**
+   * @Given I press save and publish
+   */
+  public function iPressSaveAndPublish() {
+    self::pressSaveAndPublish();
+  }
+
+  /**
+   * @Given I press save and keep published
+   */
+  public function iPressSaveAndKeepPublished() {
+    self::pressSaveAndKeepPublished();
+  }
+  
   /**
    * @Given I visit the Create Article page
    */
@@ -271,12 +263,12 @@ class ArticleContext extends PageContext {
   }
 
   /**
-   * @Given I delete the article
+   * @Given I click the delete link
    */
-  public function iDeleteTheArticle() {
+  public function iClickTheDeleteLink() {
     $this->helperContext->getSession()
       ->getPage()
-      ->pressButton($this->articlePage->getEditLink('DELETE'));
+      ->clickLink($this->articlePage->getEditLink('DELETE'));
   }
 
   /**
