@@ -9,6 +9,15 @@
 |[Test Results](#test-results)|Where to find the test results?|
 |[Behat test writing process](#behat-test-writing-process)|How to write new tests?|
 
+## Dependenices
+### Composer
+This command will download and install Composer as a system-wide command named composer, under /usr/local/bin.
+```
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+```
+
+### Java
+Java v1.7 is required.
 
 ##INITIAL SET-UP
 

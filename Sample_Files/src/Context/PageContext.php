@@ -1,7 +1,7 @@
 <?php
 
 /**
- *@file
+ * @file
  * Class PageContext implements the behavior for general pages.
  */
 
@@ -14,6 +14,13 @@ use CWTest\Context\HelperContext;
 use CWTest\Util\Page;
 
 class PageContext implements Context {
+
+  //  Buttons.
+  const BUTTON_SAVE_AND_PUBLISH = 'SAVE_AND_PUBLISH';
+  const BUTTON_SAVE_AS_UNPUBLISHED = 'SAVE_AS_UNPUBLISHED';
+  const BUTTON_PREVIEW = 'PREVIEW';
+  const BUTTON_SAVE_AND_KEEP_PUBLISHED = 'SAVE_AND_KEEP_PUBLISHED';
+  const BUTTON_SAVE_AND_UNPUBLISH = 'SAVE_AND_UNPUBLISH';
 
   /**
    * @var HelperContext
@@ -113,6 +120,51 @@ class PageContext implements Context {
   protected function verifyFooter() {
     $footer_regions = $this->page->getAllHeaderRegions();
     self::verifyRegions($footer_regions);
+  }
+
+  /**
+   * @Given I press save and publish
+   */
+  public function iPressSaveAndPublish() {
+    $this->helperContext->getSession()
+      ->getPage()
+      ->pressButton($this->page->getButton(self::BUTTON_SAVE_AND_PUBLISH));
+  }
+
+  /**
+   * @Given I press save as unpublished
+   */
+  public function iPressSaveAsUnpublished() {
+    $this->helperContext->getSession()
+      ->getPage()
+      ->pressButton($this->page->getButton(self::BUTTON_SAVE_AS_UNPUBLISHED));
+  }
+
+  /**
+   * @Given I press preview
+   */
+  public function iPressPreview() {
+    $this->helperContext->getSession()
+      ->getPage()
+      ->pressButton($this->page->getButton(self::BUTTON_PREVIEW));
+  }
+  
+  /**
+   * @Given I press save and keep published
+   */
+  public function iPressSaveAndKeepPublished() {
+    $this->helperContext->getSession()
+      ->getPage()
+      ->pressButton($this->page->getButton(self::BUTTON_SAVE_AND_KEEP_PUBLISHED));
+  }
+
+  /**
+   * @Given I press save and unpublish
+   */
+  public function iPressSaveAndUnpublish() {
+    $this->helperContext->getSession()
+      ->getPage()
+      ->pressButton($this->page->getButton(self::BUTTON_SAVE_AND_UNPUBLISH));
   }
 }
 

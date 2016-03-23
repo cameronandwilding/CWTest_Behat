@@ -123,7 +123,7 @@ Feature: Article page
     And I press save and publish
     And I verify that the article was created successfully
     Then I visit the Delete Article page
-    And I delete the article
+    And I click the delete link
     And I verify that the article was deleted successfully
 
 

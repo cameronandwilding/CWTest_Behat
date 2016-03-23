@@ -37,6 +37,19 @@ class Page {
   );
 
   /**
+   * Buttons.
+   * @var array
+   */
+  private $buttons = array(
+    'SAVE_AND_PUBLISH' => 'Save and publish',
+    'SAVE_AS_UNPUBLISHED' => 'Save as unpublished',
+    'PREVIEW' => 'Preview',
+    'REMOVE' => 'Remove',
+    'SAVE_AND_KEEP_PUBLISHED' => 'Save and keep published',
+    'SAVE_AND_UNPUBLISH' => 'Save and unpublish',
+  );
+  
+  /**
    * Gets all header regions.
    *
    * @return array
@@ -72,5 +85,15 @@ class Page {
    */
   public function getFooterRegion($region) {
     return $this->footer_regions[$region];
+  }
+
+  /**
+   * Gets a specific button.
+   *
+   * @param string $button
+   * @return string
+   */
+  public function getButton($button) {
+    return $this->buttons[$button];
   }
 }
