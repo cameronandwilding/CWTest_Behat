@@ -103,6 +103,20 @@ class ArticleContext extends PageContext {
   }
 
   /**
+   * @Given I press save and publish
+   */
+  public function iPressSaveAndPublish() {
+    $this->iPressSaveAndPublish();
+  }
+
+  /**
+   * @Given I press save and keep published
+   */
+  public function iPressSaveAndKeepPublished() {
+    $this->iPressSaveAndKeepPublished();
+  }
+  
+  /**
    * @Given I visit the Create Article page
    */
   public function visitCreateArticlePage() {

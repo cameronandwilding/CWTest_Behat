@@ -123,45 +123,45 @@ class PageContext implements Context {
   }
 
   /**
-   * @Given I press save and publish
+   * Press the SAVE AND PUBLISH button
    */
-  public function iPressSaveAndPublish() {
+  protected function iPressSaveAndPublish() {
     $this->helperContext->getSession()
       ->getPage()
       ->pressButton($this->page->getButton(self::BUTTON_SAVE_AND_PUBLISH));
   }
 
   /**
-   * @Given I press save as unpublished
+   * Press the SAVE AS UNPUBLISHED button.
    */
-  public function iPressSaveAsUnpublished() {
+  protected function iPressSaveAsUnpublished() {
     $this->helperContext->getSession()
       ->getPage()
       ->pressButton($this->page->getButton(self::BUTTON_SAVE_AS_UNPUBLISHED));
   }
 
   /**
-   * @Given I press preview
+   * Press the PREVIEW button.
    */
-  public function iPressPreview() {
+  protected function iPressPreview() {
     $this->helperContext->getSession()
       ->getPage()
       ->pressButton($this->page->getButton(self::BUTTON_PREVIEW));
   }
   
   /**
-   * @Given I press save and keep published
+   * Press the SAVE AND KEEP PUBLISHED button.
    */
-  public function iPressSaveAndKeepPublished() {
+  protected function iPressSaveAndKeepPublished() {
     $this->helperContext->getSession()
       ->getPage()
       ->pressButton($this->page->getButton(self::BUTTON_SAVE_AND_KEEP_PUBLISHED));
   }
 
   /**
-   * @Given I press save and unpublish
+   * Press the SAVE AND UNPUBLISH button.
    */
-  public function iPressSaveAndUnpublish() {
+  protected function iPressSaveAndUnpublish() {
     $this->helperContext->getSession()
       ->getPage()
       ->pressButton($this->page->getButton(self::BUTTON_SAVE_AND_UNPUBLISH));
