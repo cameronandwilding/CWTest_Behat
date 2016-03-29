@@ -294,6 +294,13 @@ class ArticleContext extends PageContext {
   }
 
   /**
+   * @Given I can see the text :text in the Article page :region region
+   */
+  public function iCanSeeTheTextInTheArticlePageRegion($text, $region) {
+    $this->helperContext->iCanSeeInTheRegion($this->articlePage->getRegion($region), $text);
+  }
+  
+  /**
    * @Given I verify the header
    */
   public function iVerifyTheHeader() {
