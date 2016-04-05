@@ -5,7 +5,6 @@ mkdir ./../Servers
 mkdir ./../Results
 mkdir ./../Results/Behat
 mkdir ./../Results/Behat/screenshots
-mkdir ./../Results/Behat/junit
 
 # Download selenium
 SELENIUM_URL="https://selenium-release.storage.googleapis.com/2.52/selenium-server-standalone-2.52.0.jar"
