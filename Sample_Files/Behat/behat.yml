@@ -54,8 +54,6 @@ default:
     pretty: true
     html:
       output_path: %paths.base%/../Results/Behat
-    junit:
-      output_path: %paths.base%/../Results/Behat/junit
 
 imports:
   - behat.local.yml
