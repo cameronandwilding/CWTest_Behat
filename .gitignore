@@ -7,3 +7,4 @@ Behat/run-behat.sh
 Behat/images
 README.md
 .gitignore
+docs/_build
