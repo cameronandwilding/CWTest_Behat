@@ -8,9 +8,7 @@ To add the tool to an existing project follow the next steps
 
    Create a folder, ideally in a Test folder in your project, outside your Drupal webroot.
 
-#. Create a composer JSON file Composer
-
-   Create a composer.json file in the test folder root.
+#. Add the following to the componser.json file of the project::
 
     {
       "require": {
@@ -26,5 +24,4 @@ To add the tool to an existing project follow the next steps
       }
     }
 
-#. Follow the installation instructions:
-   :ref:`installation`
+#. Follow the :doc:`/installation` instructions.

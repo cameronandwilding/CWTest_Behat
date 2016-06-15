@@ -20,6 +20,15 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import sys, os
+
+# Check if this build is on readthedocs.org
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+if not on_rtd:
+  import sphinx_rtd_theme
+  html_theme = "sphinx_rtd_theme"
+  html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -29,7 +38,7 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

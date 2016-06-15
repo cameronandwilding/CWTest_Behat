@@ -9,7 +9,8 @@ In the following, XXXX is the name of the page being tested, e.g. Basic, Article
 
 The basic process for writing any test would be:
 
-#. SCENARIOS
+Scenarios
+---------
 
    Decide on a business scenario that you would like to automate.
 
@@ -17,11 +18,12 @@ The basic process for writing any test would be:
 
    For the rest of the following, let's think of a login scenario where a user is going:
 
-   open the login page
-   enter a username and password.
-   click the login button.
+   #. open the login page.
+   #. enter a username and password.
+   #. click the login button.
 
-#. FEATURE file
+Features
+--------
 
    This file contains the high-level test scenarios written in a Gherkin syntax.
 
@@ -42,7 +44,8 @@ The basic process for writing any test would be:
    * template - /Sample_Files/Behat/features/LoginPage.feature
    * `Gherkin <http://docs.behat.org/en/v3.0/guides/1.gherkin.html>`_
 
-#. PAGE.php file
+Page.php
+--------
 
    This file contains the path, page objects, and getters/setters for all the fields on the page XXXX.
 
@@ -62,9 +65,10 @@ The basic process for writing any test would be:
 
    Where possible, always use IDs for your objects. If IDs are not available, consider using name, data-drupal-selector, or xpath.
 
-   template - /Sample_Files/src/Util/ArticlePage.php
+   * template - /Sample_Files/src/Util/ArticlePage.php
 
-#. CONTEXT.php file
+Context.php
+-----------
 
    This file contains all of the functions that are specific to the XXXX page.
 
@@ -84,7 +88,7 @@ The basic process for writing any test would be:
 
    Keep all functions as short as possible, ideally doing one thing each, like filling in a text field.
 
-   template - /Sample_Files/src/Context/ArticleContext.php
+   * template - /Sample_Files/src/Context/ArticleContext.php
    * `Step definitions <http://docs.behat.org/en/v3.0/guides/2.definitions.html>`_
    * `Hooks <http://docs.behat.org/en/v3.0/guides/3.hooks.html>`_
    * `Contexts <http://docs.behat.org/en/v3.0/guides/4.contexts.html>`_
