@@ -320,3 +320,8 @@ https://github.com/composer/composer/blob/master/doc/articles/troubleshooting.md
 3. If you get errors related to timezone settings, add the following to your path profile (with the appropriate version of PHP):
 
 `export PATH="/Applications/MAMP/bin/php/php5.6.7/bin:$PATH"`
+
+CREDITS
+========
+
+This work is sponsored and supported by Cameron & Wilding, a [London Drupal Agency](https://www.cameronandwilding.com/).
