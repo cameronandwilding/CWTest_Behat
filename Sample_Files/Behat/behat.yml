@@ -3,36 +3,16 @@ default:
     login:
       paths: [ %paths.base%/features ]
       filters:
-        tags: @login
+        tags: "@regression"
       contexts:
         - CWTest\Context\LoginContext
         - CWTest\Context\MyAccountContext
-        - CWTest\Context\HelperContext:
-            parameters:
-              screenshot_path: %paths.base%/../Results/Behat/screenshots
-        - Drupal\DrupalExtension\Context\MinkContext
-        - Drupal\DrupalExtension\Context\DrupalContext
-    article:
-      paths: [ %paths.base%/features ]
-      filters:
-        tags: @article
-      contexts:
         - CWTest\Context\ArticleContext
         - CWTest\Context\HelperContext:
             parameters:
               screenshot_path: %paths.base%/../Results/Behat/screenshots
-        - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
-    roles:
-      paths: [ %paths.base%/features ]
-      filters:
-        tags: @roles
-      contexts:
-        - CWTest\Context\HelperContext:
-            parameters:
-              screenshot_path: %paths.base%/../Results/Behat/screenshots
         - Drupal\DrupalExtension\Context\DrupalContext
-        - Drupal\DrupalExtension\Context\MinkContext
   extensions:
     Behat\MinkExtension:
       files_path: %paths.base%/images
@@ -53,6 +33,8 @@ default:
   formatters:
     pretty: true
     html:
+      output_path: %paths.base%/../Results/Behat
+    junit:
       output_path: %paths.base%/../Results/Behat
 
 imports:
