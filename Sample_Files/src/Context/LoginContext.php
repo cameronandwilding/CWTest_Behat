@@ -104,7 +104,5 @@ class LoginContext extends PageContext  {
     $this->verifyField(self::FIELD_USERNAME);
     $this->verifyField(self::FIELD_PASSWORD);
     $this->verifyButton(self::BUTTON_LOGIN);
-    $this->helperContext->iCanSeeInTheRegion('Enter your Cameron and Wilding username.', self::REGION_USERNAME_DESCRIPTION);
-    $this->helperContext->iCanSeeInTheRegion('Enter the password that accompanies your username.', self::REGION_PASSWORD_DESCRIPTION);
   }
 }
