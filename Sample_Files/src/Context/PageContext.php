@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Class PageContext implements the behavior for general pages.
+ * Class PageContext provides generic test methods for other Context files.
  */
 
 namespace CWTest\Context;
@@ -10,17 +10,21 @@ namespace CWTest\Context;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use PHPUnit_Framework_Assert as Assertions;
-use CWTest\Context\HelperContext;
-use CWTest\Util\Page;
 
+/**
+ * Class PageContext
+ * @package CWTest\Context
+ */
 class PageContext implements Context {
 
   //  Buttons.
-  const BUTTON_SAVE_AND_PUBLISH = 'SAVE_AND_PUBLISH';
-  const BUTTON_SAVE_AS_UNPUBLISHED = 'SAVE_AS_UNPUBLISHED';
-  const BUTTON_PREVIEW = 'PREVIEW';
-  const BUTTON_SAVE_AND_KEEP_PUBLISHED = 'SAVE_AND_KEEP_PUBLISHED';
-  const BUTTON_SAVE_AND_UNPUBLISH = 'SAVE_AND_UNPUBLISH';
+  const BUTTON_SAVE_AND_PUBLISH = 'Save and publish';
+  const BUTTON_SAVE_AS_UNPUBLISHED = 'Save as unpublished';
+  const BUTTON_SAVE_AND_KEEP_PUBLISHED = 'Save and keep published';
+  /**
+   *
+   */
+  const BUTTON_SAVE_AND_UNPUBLISH = 'Save and unpublish';
 
   /**
    * @var HelperContext
@@ -28,20 +32,15 @@ class PageContext implements Context {
   public $helperContext;
 
   /**
-   * Page instance.
-   * @var Page
-   */
-  private $page;
-
-  /**
    * PageContext constructor.
    */
   public function __construct() {
-    $this->page = new Page();
   }
 
   /**
    * @BeforeScenario
+   *
+   * @param BeforeScenarioScope $scope
    *
    * Allow access to the HelperContext.
    */
@@ -51,8 +50,18 @@ class PageContext implements Context {
   }
 
   /**
+   * Verify the field is displayed on the screen.
+   * @param string $field
+   */
+  protected function verifyField($field) {
+    Assertions::assertTrue($this->helperContext->getSession()
+      ->getPage()
+      ->hasField($field), $field . ' field not found');
+  }
+
+  /**
    * Verify the fields displayed on the screen.
-   * @param $fields
+   * @param array $fields
    */
   protected function verifyFields($fields) {
     foreach ($fields as $field) {
@@ -63,8 +72,17 @@ class PageContext implements Context {
   }
 
   /**
+   * Verify the frame is displayed on the screen.
+   * @param string $frame
+   */
+  protected function verifyFrame($frame) {
+    Assertions::assertTrue($this->helperContext->hasFrame($frame), $frame . ' frame not found');
+
+  }
+
+  /**
    * Verify the frames displayed on the screen.
-   * @param $frames
+   * @param array $frames
    */
   protected function verifyFrames($frames) {
     foreach ($frames as $frame) {
@@ -73,8 +91,18 @@ class PageContext implements Context {
   }
 
   /**
+   * Verify the button is displayed on the screen.
+   * @param string $button
+   */
+  protected function verifyButton($button) {
+    Assertions::assertTrue($this->helperContext->getSession()
+      ->getPage()
+      ->hasButton($button), $button . ' button not found');
+  }
+
+  /**
    * Verify the buttons displayed on the screen.
-   * @param $buttons
+   * @param array $buttons
    */
   protected function verifyButtons($buttons) {
     foreach ($buttons as $button) {
@@ -86,7 +114,7 @@ class PageContext implements Context {
 
   /**
    * Verify the regions displayed on the screen.
-   * @param $regions
+   * @param array $regions
    */
   protected function verifyRegions($regions) {
     foreach ($regions as $region) {
@@ -96,7 +124,7 @@ class PageContext implements Context {
 
   /**
    * Verify the links displayed on the screen.
-   * @param $links
+   * @param array $links
    */
   protected function verifyLinks($links) {
     foreach ($links as $link) {
@@ -107,28 +135,12 @@ class PageContext implements Context {
   }
 
   /**
-   * Verify the header.
-   */
-  protected function verifyHeader() {
-    $header_regions = $this->page->getAllHeaderRegions();
-    self::verifyRegions($header_regions);
-  }
-
-  /**
-   * Verify the footer.
-   */
-  protected function verifyFooter() {
-    $footer_regions = $this->page->getAllHeaderRegions();
-    self::verifyRegions($footer_regions);
-  }
-
-  /**
    * Press the SAVE AND PUBLISH button
    */
   protected function pressSaveAndPublish() {
     $this->helperContext->getSession()
       ->getPage()
-      ->pressButton($this->page->getButton(self::BUTTON_SAVE_AND_PUBLISH));
+      ->pressButton(self::BUTTON_SAVE_AND_PUBLISH);
   }
 
   /**
@@ -137,25 +149,16 @@ class PageContext implements Context {
   protected function pressSaveAsUnpublished() {
     $this->helperContext->getSession()
       ->getPage()
-      ->pressButton($this->page->getButton(self::BUTTON_SAVE_AS_UNPUBLISHED));
+      ->pressButton(self::BUTTON_SAVE_AS_UNPUBLISHED);
   }
 
-  /**
-   * Press the PREVIEW button.
-   */
-  protected function pressPreview() {
-    $this->helperContext->getSession()
-      ->getPage()
-      ->pressButton($this->page->getButton(self::BUTTON_PREVIEW));
-  }
-  
   /**
    * Press the SAVE AND KEEP PUBLISHED button.
    */
   protected function pressSaveAndKeepPublished() {
     $this->helperContext->getSession()
       ->getPage()
-      ->pressButton($this->page->getButton(self::BUTTON_SAVE_AND_KEEP_PUBLISHED));
+      ->pressButton(self::BUTTON_SAVE_AND_KEEP_PUBLISHED);
   }
 
   /**
@@ -164,7 +167,6 @@ class PageContext implements Context {
   protected function pressSaveAndUnpublish() {
     $this->helperContext->getSession()
       ->getPage()
-      ->pressButton($this->page->getButton(self::BUTTON_SAVE_AND_UNPUBLISH));
+      ->pressButton(self::BUTTON_SAVE_AND_UNPUBLISH);
   }
 }
-

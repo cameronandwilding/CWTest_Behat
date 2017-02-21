@@ -2,59 +2,49 @@
 
 /**
  *@file
- * Class MyAccountContext implements the behavior for my account pages.
+ * Class MyAccountContext tests the behaviour of the My Account page.
  */
 
 namespace CWTest\Context;
 
-use CWTest\Util\MyAccountPage;
-
 class MyAccountContext extends PageContext {
 
   //  Regions.
-  const REGION_TOOLBAR = 'TOOLBAR';
-  const REGION_CONTENT = 'CONTENT';
+  const REGION_CONTENT = '#content';
 
   /**
-   * MyAccountPage instance.
-   *
-   * @var MyAccountPage
+   * The path to the My Account page.
+   * @var string
    */
-  private $myAccountPage;
+  private $path = '/user';
 
   /**
    * MyAccountContext constructor.
    */
   public function __construct() {
     parent::__construct();
-    $this->myAccountPage = new MyAccountPage();
   }
 
   /**
    * @Given I visit the my account page
    */
   public function visitMyAccountPage() {
-    $this->helperContext->visitPath($this->myAccountPage->getPath());
+    $this->helperContext->visitPath($this->path);
   }
 
   /**
    * @Given I should be logged in successfully
    */
   public function iShouldBeLoggedInSuccessfully() {
-    $this->helperContext->iCanSeeInTheRegion('Manage', $this->myAccountPage->getRegion(self::REGION_TOOLBAR));
-    $this->helperContext->iCanSeeTheLinkInTheRegion('View', $this->myAccountPage->getRegion(self::REGION_CONTENT));
-    $this->helperContext->iCanSeeTheLinkInTheRegion('Shortcuts', $this->myAccountPage->getRegion(self::REGION_CONTENT));
-    $this->helperContext->iCanSeeInTheRegion('Edit', $this->myAccountPage->getRegion(self::REGION_CONTENT));
-    $this->helperContext->iCanSeeInTheRegion('Member for', $this->myAccountPage->getRegion(self::REGION_CONTENT));
+    $this->helperContext->iCanSeeTheLinkInTheRegion('View', self::REGION_CONTENT);
+    $this->helperContext->iCanSeeInTheRegion('Edit', self::REGION_CONTENT);
+    $this->helperContext->iCanSeeInTheRegion('Member for', self::REGION_CONTENT);
   }
 
   /**
    * @Given I verify the my account page fields and buttons are displayed on the page
    */
   public function assertMyAccountPageStructure() {
-    foreach ($this->myAccountPage->getAllRegions() as $region) {
-      $this->helperContext->minkContext->assertElementOnPage($region);
-    }
+    $this->helperContext->minkContext->assertElementOnPage(self::REGION_CONTENT);
   }
 }
-

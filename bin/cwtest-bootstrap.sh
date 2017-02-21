@@ -7,7 +7,7 @@ mkdir ./../Results/Behat
 mkdir ./../Results/Behat/screenshots
 
 # Download selenium
-SELENIUM_URL="https://selenium-release.storage.googleapis.com/2.52/selenium-server-standalone-2.52.0.jar"
+SELENIUM_URL="https://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar"
 SELENIUM_DESTINATION="./../Servers/selenium.jar"
 if type wget -v >/dev/null 2>&1; then
   wget ${SELENIUM_URL} -O ${SELENIUM_DESTINATION}
