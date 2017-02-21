@@ -19,30 +19,35 @@ Feature: Roles and Responsibilities
 ###   ANONYMOUS USER
 #########################################################################################
 
-  @roles @api @regression @smoke
+  @roles @api @regression
   Scenario: Verify Anonymous User access to the homepage
     Given I am not logged in
-    Then I check the HTTP response code is 200 for '/'
+    And I am on "/"
+    Then I should get a 200 HTTP response
 
   @roles @api @regression
   Scenario: Verify Anonymous User access to /user/login
     Given I am not logged in
-    Then I check the HTTP response code is 200 for '/user/login'
+    And I am on "/user/login"
+    Then I should get a 200 HTTP response
 
   @roles @api @regression
   Scenario: Verify Anonymous User access to /node/add
     Given I am not logged in
-    Then I check the HTTP response code is 403 for '/node/add'
+    And I am on "/node/add"
+    Then I should get a 403 HTTP response
 
   @roles @api @regression
   Scenario: Verify Anonymous User access to /admin
     Given I am not logged in
-    Then I check the HTTP response code is 403 for '/admin'
+    And I am on "/admin"
+    Then I should get a 403 HTTP response
 
   @roles @api @regression
   Scenario: Verify Anonymous User access /user/logout
     Given I am not logged in
-    Then I check the HTTP response code is 403 for '/user/logout'
+    And I am on "/user/logout"
+    Then I should get a 403 HTTP response
 
 
 #########################################################################################
@@ -53,17 +58,16 @@ Feature: Roles and Responsibilities
   Scenario: Verify Administrator access to /node/add
     Given I am logged in as a user with the administrator role
     And I am on "/node/add"
-    Then the response status code should be 200
+    Then I should get a 200 HTTP response
 
   @roles @api @regression
   Scenario: Verify Administrator access to /admin
     Given I am logged in as a user with the administrator role
     And I am on "/admin"
-    Then the response status code should be 200
+    Then I should get a 200 HTTP response
 
   @roles @api @regression
   Scenario: Verify Administrator access /user/logout
     Given I am logged in as a user with the administrator role
     And I am on "/user/logout"
-    Then the response status code should be 200
-
+    Then I should get a 200 HTTP response

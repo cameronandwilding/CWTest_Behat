@@ -2,75 +2,44 @@
 
 /**
  *@file
- * Class LoginContext implements the behavior for login pages.
+ * Class LoginContext tests the behaviour of the login page.
  */
 
 namespace CWTest\Context;
 
-use CWTest\Util\LoginPage;
 use CWTest\Exception\CWContextException;
 
 class LoginContext extends PageContext  {
 
   //  Fields.
-  const FIELD_USERNAME = 'USERNAME';
-  const FIELD_PASSWORD = 'PASSWORD';
+  const FIELD_USERNAME = 'edit-name';
+  const FIELD_PASSWORD = 'edit-pass';
 
   //  Buttons.
-  const BUTTON_LOGIN = 'LOG_IN';
+  const BUTTON_LOGIN = 'edit-submit';
 
-  //  Regions.
-  const REGION_LOGIN_FAILURE = 'LOGIN_FAILURE';
+  // Regions.
+  const REGION_USERNAME_DESCRIPTION = '#edit-name--description';
+  const REGION_PASSWORD_DESCRIPTION = '#edit-pass--description';
 
   /**
-   * LoginPage instance.
-   *
-   * @var LoginPage
+   * The path to the Login page.
+   * @var string
    */
-  private $loginPage;
+  private $path = '/user/login';
 
   /**
    * LoginContext constructor.
    */
   public function __construct() {
     parent::__construct();
-    $this->loginPage = new LoginPage();
   }
 
   /**
    * @Given I visit the Login page
    */
   public function visitLoginPage() {
-    $this->helperContext->visitPath($this->loginPage->getPath());
-  }
-
-  /**
-   * @param $username
-   * @throws \Behat\Mink\Exception\ElementNotFoundException
-   */
-  private function fillUsernameField($username) {
-    $this->helperContext->getSession()
-      ->getPage()
-      ->fillField($this->loginPage->getField(self::FIELD_USERNAME), $username);
-  }
-
-  /**
-   * @param $password
-   * @throws \Behat\Mink\Exception\ElementNotFoundException
-   */
-  private function fillPasswordField($password) {
-    $this->helperContext->getSession()
-      ->getPage()
-      ->fillField($this->loginPage->getField(self::FIELD_PASSWORD), $password);
-  }
-
-  /**
-   * @throws \Behat\Mink\Exception\ElementNotFoundException
-   */
-  private function pressLoginButton() {
-    $this->helperContext->getSession()
-      ->getPage()
-      ->pressButton($this->loginPage->getButton(self::BUTTON_LOGIN));
+    $this->helperContext->visitPath($this->path);
   }
 
   /**
@@ -79,7 +48,9 @@ class LoginContext extends PageContext  {
    * @param string $username
    */
   public function iEnterAUsername($username) {
-    self::fillUsernameField($username);
+    $this->helperContext->getSession()
+      ->getPage()
+      ->fillField(self::FIELD_USERNAME, $username);
   }
   /**
    * @Given I enter the password :password
@@ -87,25 +58,33 @@ class LoginContext extends PageContext  {
    * @param string $password
    */
   public function iEnterAPassword($password) {
-    self::fillPasswordField($password);
+    $this->helperContext->getSession()
+      ->getPage()
+      ->fillField(self::FIELD_PASSWORD, $password);
   }
 
   /**
    * @Given I enter the username :username and password :password
    *
-   * @param string $username , $password
+   * @param string $username
+   * @param string $password
    */
   public function iEnterAUsernameAndPassword($username, $password) {
-    self::fillUsernameField($username);
-    self::fillPasswordField($password);
+    $this->helperContext->getSession()
+      ->getPage()
+      ->fillField(self::FIELD_USERNAME, $username);
+    $this->helperContext->getSession()
+      ->getPage()
+      ->fillField(self::FIELD_PASSWORD, $password);
   }
-
 
   /**
    * @Given I press login
    */
   public function iPressTheLoginButton() {
-    self::pressLoginButton();
+    $this->helperContext->getSession()
+      ->getPage()
+      ->pressButton(self::BUTTON_LOGIN);
   }
 
   /**
@@ -113,26 +92,17 @@ class LoginContext extends PageContext  {
    */
   public function iAmStillOnTheLoginPage() {
     $current_url = $this->helperContext->getSession()->getCurrentUrl();
-    if (strpos($current_url, $this->loginPage->getPath()) === FALSE) {
+    if (strpos($current_url, $this->path) === FALSE) {
       throw new CWContextException("No longer on the Loginpage, but on {$current_url}.");
     }
-  }
-
-  /**
-   * @Given I should see the login failure message
-   */
-  public function iShouldSeeTheLoginFailureMessage() {
-    $this->helperContext->iCanSeeInTheRegion('Unrecognized username or password.', $this->loginPage->getMessageRegion(self::REGION_LOGIN_FAILURE));
-    $this->helperContext->iCanSeeInTheRegion('Have you forgotten your password?', $this->loginPage->getMessageRegion(self::REGION_LOGIN_FAILURE));
   }
 
   /**
    * @Given I verify the structure of the Login page
    */
   public function iVerifyTheStructureOfTheLoginPage() {
-    self::verifyFields($this->loginPage->getAllFields());
-    self::verifyButtons($this->loginPage->getAllButtons());
-    self::verifyRegions($this->loginPage->getAllRegions());
+    $this->verifyField(self::FIELD_USERNAME);
+    $this->verifyField(self::FIELD_PASSWORD);
+    $this->verifyButton(self::BUTTON_LOGIN);
   }
 }
-

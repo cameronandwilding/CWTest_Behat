@@ -1,24 +1,21 @@
 default:
   suites:
-    login:
+    behat:
       paths: [ %paths.base%/features ]
       filters:
         tags: "@regression"
       contexts:
         - CWTest\Context\LoginContext
         - CWTest\Context\MyAccountContext
-        - CWTest\Context\ArticleContext
         - CWTest\Context\HelperContext:
             parameters:
-              screenshot_path: %paths.base%/../Results/Behat/screenshots
+              screenshot_path: %paths.base%/../Results/screenshots
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\DrupalContext
   extensions:
     Behat\MinkExtension:
       files_path: %paths.base%/images
       goutte: ~
-      selenium2:
-        wd_host: "http://localhost:4444/wd/hub"
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
@@ -33,9 +30,9 @@ default:
   formatters:
     pretty: true
     html:
-      output_path: %paths.base%/../Results/Behat
+      output_path: %paths.base%/../Results
     junit:
-      output_path: %paths.base%/../Results/Behat
+      output_path: %paths.base%/../Results
 
 imports:
   - behat.local.yml
@@ -44,11 +41,15 @@ chrome:
   extensions:
     Behat\MinkExtension:
       browser_name: chrome
+      selenium2:
+        wd_host: "http://localhost:4444/wd/hub"
 
 firefox:
   extensions:
     Behat\MinkExtension:
       browser_name: firefox
+      selenium2:
+        wd_host: "http://localhost:4444/wd/hub"
 
 phantomjs:
   extensions:
@@ -56,3 +57,21 @@ phantomjs:
       selenium2:
         wd_host: "http://localhost:4445/wd/hub"
 
+browserstack:
+  extensions:
+    Behat\MinkExtension:
+      sessions:
+        my_session:
+          browser_stack:
+            username: <<<BROWSERSTACK USERNAME>>>
+            access_key: <<<BROWSERSTACK ACCESS KEY>>>
+            capabilities:
+              name: "Behat Tests"
+              os: "OS X"
+              os_version: Sierra
+              browser: chrome
+              browserVersion: 56
+              resolution: 1920x1080
+              extra_capabilities:
+                browserstack-tunnel:  true
+                browserstack.debug: true

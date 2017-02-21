@@ -8,19 +8,34 @@ Feature: Login page
 ###  LOGIN PAGE ACCESSIBLE
 #########################################################################################
 
-  @login @api @smoke @setup
+  @login @api @regression
   Scenario: Verify the login page is accessible
     Given I visit the Login page
 
 
 #########################################################################################
-###  VALIDATE LAYOUT AND MANDATORY FIELDS
+###  VALIDATE FIELDS, BUTTONS, REGIONS
 #########################################################################################
 
   @login @api @regression
   Scenario: Verify the structure of the login page
     Given I visit the Login page
     Then I verify the structure of the Login page
+
+
+#########################################################################################
+###  SUCCESSFUL LOGIN
+#########################################################################################
+
+  @login @api @regression
+  Scenario: Verify a successful login
+    Given I am logged in as a user with the administrator role
+    Then I should be logged in successfully
+
+
+#########################################################################################
+###  UNSUCCESSFUL LOGIN
+#########################################################################################
 
   @login @api @regression
   Scenario: Validation rules - missing username and password
@@ -42,29 +57,9 @@ Feature: Login page
     When I press login
     Then I am still on the Login page
 
-
-#########################################################################################
-###  SUCCESSFUL LOGIN
-#########################################################################################
-
-  @login @api @regression @smoke
-  Scenario: Verify a successful login
-    Given I am logged in as a user with the administrator role
-    And I move backward one page
-    Then I should be logged in successfully
-    And I verify the my account page fields and buttons are displayed on the page
-
-
-#########################################################################################
-###  UNSUCCESSFUL LOGIN
-#########################################################################################
-
   @login @api @regression
   Scenario: Verify a failed login
     Given I visit the Login page
     When I enter the username invalid and password invalid
     And I press login
-    Then I should see the login failure message
-
-
-
+    Then I am still on the Login page
