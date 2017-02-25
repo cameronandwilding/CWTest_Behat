@@ -3,8 +3,8 @@
 # Make directories.
 mkdir ./../Servers
 mkdir ./../Results
-mkdir ./../Results/Behat
-mkdir ./../Results/Behat/screenshots
+mkdir ./../Results
+mkdir ./../Results/screenshots
 
 # Download selenium
 SELENIUM_URL="https://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar"
