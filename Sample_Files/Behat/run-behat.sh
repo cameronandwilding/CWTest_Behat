@@ -3,8 +3,8 @@
 ##############################################################################
 ###    BACKUP PREVIOUS RESULT FILES
 ##############################################################################
-mkdir -p ../Results/Behat/History
-mv ../Results/Behat/*.html ../Results/Behat/History
+mkdir -p ../Results/History
+mv ../Results/*.html ../Results/History
 
 
 ##############################################################################
