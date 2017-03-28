@@ -1,9 +1,9 @@
 Feature: Article page
   In order to test the Article page
   As an administrator
-  I need to verify the page functionality
+  I need to verify the Article page functionality
 
-  @article @api @regression
+  @article @api @regression @javascript
   Scenario: Create an Article
     Given I am logged in as a user with the administrator role
     And I am on "/node/add/article"
@@ -13,7 +13,7 @@ Feature: Article page
     When I press "Save and publish"
     Then I should see "Article Article Number One has been created."
 
-  @article @api @regression
+  @article @api @regression @javascript
   Scenario Outline: Create an Article with varied inputs
     Given I am logged in as a user with the "<User>" role
     And I am on "<URL>"
