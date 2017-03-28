@@ -8,7 +8,7 @@ Feature: Login page
 ###  LOGIN PAGE ACCESSIBLE
 #########################################################################################
 
-  @login @api @regression
+  @setup @login @api @regression
   Scenario: Verify the login page is accessible
     Given I visit the Login page
 
