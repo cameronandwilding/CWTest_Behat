@@ -1,4 +1,4 @@
-#GUIDE
+# GUIDE
 
 |Link|What do you want to do?|
 |-----|----------|
@@ -19,7 +19,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 ### Java
 Java v1.7 is required.
 
-##INITIAL SET-UP
+## INITIAL SET-UP
 
 1. Select a location for the framework
 --------------------------------------
@@ -97,7 +97,7 @@ Execute the following:
 Selenium will launch and run a test. You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
-##ONBOARDING TO A PROJECT
+## ONBOARDING TO A PROJECT
 
 1. Install via [Composer](https://getcomposer.org/)
 ---------------------------------------------------
@@ -151,7 +151,7 @@ Execute the following:
 Selenium will launch and run a test. You should see `1 scenarios (1 passed)` in the terminal window after 15-20 seconds.
 
 
-##ONGOING UPDATE
+## ONGOING UPDATE
 
 1. Update via [Composer](https://getcomposer.org/)
 ---------------------------------------------------
@@ -171,7 +171,7 @@ cd ..
 ```
 
 
-##Test Execution
+## Test Execution
 
 Navigate to the Behat folder inside your Test folder:
 
@@ -191,12 +191,12 @@ or
 ./run-behat.sh regression chrome
 ```
 
-##Test Results
+## Test Results
 
 The results of all tests will be stored in `/Results/Behat/Twig_***.html`
 
 
-##Behat test writing process
+## Behat test writing process
 
 It is a good idea to read through the LOGIN feature, page, and context files while reading through the following descriptions.
 
@@ -309,17 +309,15 @@ TAGS
 
 TROUBLESHOOTING
 ===============
-1. If you get API rate limit messages during the `./bootstrap.sh` step, please see:
-
-https://github.com/composer/composer/blob/master/doc/articles/troubleshooting.md#api-rate-limit-and-oauth-tokens
+1. If you get API rate limit messages during the `./bootstrap.sh` step, please see: [API rate limit and OAuth tokens](https://github.com/composer/composer/blob/master/doc/articles/troubleshooting.md#api-rate-limit-and-oauth-tokens).
 
 2. If you get the folowing when running the tests, please upgrade your version of java:
 
-`Exception in thread "main" java.lang.UnsupportedClassVersionError: org/openqa/grid/selenium/GridLauncher : Unsupported major.minor version 51.0`
+    `Exception in thread "main" java.lang.UnsupportedClassVersionError: org/openqa/grid/selenium/GridLauncher : Unsupported major.minor version 51.0`
 
 3. If you get errors related to timezone settings, add the following to your path profile (with the appropriate version of PHP):
 
-`export PATH="/Applications/MAMP/bin/php/php5.6.7/bin:$PATH"`
+    `export PATH="/Applications/MAMP/bin/php/php5.6.7/bin:$PATH"`
 
 CREDITS
 ========
