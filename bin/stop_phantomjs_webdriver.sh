@@ -1,8 +1,5 @@
-#!/bin/bash
+#!/bin/bash -e
 
-#  Stop Phantom JS
+# Stop PhantomJS.
 printf "\nStopping phantom webdriver...\n"
-pgrep phantomjs | xargs kill
-
-
-
+pkill phantomjs
