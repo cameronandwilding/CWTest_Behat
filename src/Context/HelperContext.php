@@ -166,7 +166,7 @@ class HelperContext extends RawDrupalContext implements SnippetAcceptingContext 
     $featureFolder = str_replace(' ', '', $scope->getFeature()->getTitle());
     $filePath = $this->parameters['screenshot_path'] . '/' . $featureFolder;
     if (!file_exists($filePath)) {
-      mkdir($filePath);
+      mkdir($filePath, 0777, TRUE);
     }
 
     $driver = $this->getSession()->getDriver();
