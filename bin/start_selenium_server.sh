@@ -15,15 +15,16 @@ function checkAndStartSeleniumServer {
 }
 
 function runSeleniumServer {
-  if [ "$SELENIUM_PATH" ] && [ -f "$SELENIUM_PATH" ]; then
+  if type selenium-server; then
+    selenium-server &
+  elif [ "$SELENIUM_PATH" ] && [ -f "$SELENIUM_PATH" ]; then
     java -jar "$SELENIUM_PATH" -port 4444 -trustAllSSLCertificates &
-    local err_code=$?
-    sleep 4
-    return $err_code
   else
     printf "Selenium JAR not found, please run manually or specify its path by SELENIUM_PATH!\n"
   fi
-  return 1
+  local err_code=$?
+  sleep 4
+  return $err_code
 }
 
 checkAndStartSeleniumServer
