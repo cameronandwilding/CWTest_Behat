@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash -e
 
 ##############################################################################
 ###    BACKUP PREVIOUS RESULT FILES
 ##############################################################################
 mkdir -p ../Results/History
-mv ../Results/*.html ../Results/History
+ls ../Results/*.html && mv ../Results/*.html ../Results/History
 
 
 ##############################################################################
@@ -38,7 +38,7 @@ fi
 if [ -z $PROFILE ] || [ -z $TAG ]
 then
    printf 'ERROR: Expected Tag followed by Profile.\nE.g. ./run-behat.sh [tag] [profile]\n'
-   exit 0
+   exit 1
 fi
 
 
@@ -47,7 +47,10 @@ fi
 ##############################################################################
 if [ $PROFILE = "firefox" ] || [ $PROFILE = "chrome"  ]
 then
-   sh $COMPOSER_BIN/start_selenium_server.sh;
+   if ! . "$COMPOSER_BIN/start_selenium_server.sh"; then
+     printf 'ERROR: Failed to run Selenium server!\n'
+     exit 1
+   fi
    if [ ! -z "$SCENARIO_NAME" ]
    then
       $COMPOSER_BIN/behat -c behat.yml --tags=@$TAG -p $PROFILE --name="$SCENARIO_NAME"
@@ -75,5 +78,5 @@ fi
 #  Stop Selenium server.
 if [ $PROFILE = "firefox" ] || [ $PROFILE = "chrome"  ]
 then
-   sh $COMPOSER_BIN/stop_selenium_server.sh
+   . $COMPOSER_BIN/stop_selenium_server.sh
 fi
