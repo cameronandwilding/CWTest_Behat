@@ -3,7 +3,8 @@ CWD="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 SELENIUM_PATH="${SELENIUM_PATH:-$(find "$CWD/.." -name selenium.jar -print -quit)}"
 
 function checkAndStartSeleniumServer {
-  if ! </dev/tcp/localhost/4444; then
+  if ! </dev/tcp/localhost/4444
+  then
     printf "Port 4444 is free - starting Selenium server...\n"
     runSeleniumServer
     return $?
@@ -16,9 +17,11 @@ function checkAndStartSeleniumServer {
 function runSeleniumServer {
   if [ "$SELENIUM_PATH" ] && [ -f "$SELENIUM_PATH" ]; then
     java -jar "$SELENIUM_PATH" -port 4444 -trustAllSSLCertificates &
-    return $?
+    local err_code=$?
+    sleep 4
+    return $err_code
   else
-    printf "Selenium JAR not found, please run manually or specify path by SELENIUM_PATH!\n"
+    printf "Selenium JAR not found, please run manually or specify its path by SELENIUM_PATH!\n"
   fi
   return 1
 }
