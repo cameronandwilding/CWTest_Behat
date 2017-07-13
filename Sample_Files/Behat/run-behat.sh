@@ -47,22 +47,26 @@ fi
 ##############################################################################
 if [ $PROFILE = "firefox" ] || [ $PROFILE = "chrome"  ]
 then
-   if ! . "$COMPOSER_BIN/start_selenium_server.sh"; then
+   if ! . "$COMPOSER_BIN"/start_selenium_server.sh
+   then
      printf 'ERROR: Failed to run Selenium server!\n'
      exit 1
    fi
    if [ ! -z "$SCENARIO_NAME" ]
    then
-      $COMPOSER_BIN/behat -c behat.yml --tags=@$TAG -p $PROFILE --name="$SCENARIO_NAME"
+      $COMPOSER_BIN/behat -c behat.yml --tags=@$TAG -p $PROFILE --name="$SCENARIO_NAME" ${@:4}
    else
-      $COMPOSER_BIN/behat -c behat.yml --tags=@$TAG -p $PROFILE
+      $COMPOSER_BIN/behat -c behat.yml --tags=@$TAG -p $PROFILE ${@:4}
    fi
 fi
 
 if [ $PROFILE = "phantomjs" ]
 then
-   sh $COMPOSER_BIN/start_phantomjs_webdriver.sh;
-   $COMPOSER_BIN/behat --tags=@$TAG -p $PROFILE
+   if ! . "$COMPOSER_BIN"/start_phantomjs_webdriver.sh; then
+     printf 'ERROR: Failed to run PhantomJS web driver!\n'
+     exit 1
+   fi
+   $COMPOSER_BIN/behat --tags=@$TAG -p $PROFILE ${@:4}
 fi
 
 
