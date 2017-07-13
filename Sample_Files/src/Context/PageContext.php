@@ -9,7 +9,7 @@ namespace CWTest\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-use PHPUnit_Framework_Assert as Assertions;
+use PHPUnit\Framework\Assert as Assertions;
 
 /**
  * Class PageContext
