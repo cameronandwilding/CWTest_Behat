@@ -21,6 +21,7 @@ function runSeleniumServer {
     java -jar "$SELENIUM_PATH" -port 4444 -trustAllSSLCertificates &
   else
     printf "Selenium JAR not found, please run manually or specify its path by SELENIUM_PATH!\n"
+    false
   fi
   local err_code=$?
   sleep 4
