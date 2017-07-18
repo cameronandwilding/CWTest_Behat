@@ -14,7 +14,7 @@ default:
         - Drupal\DrupalExtension\Context\DrupalContext
   extensions:
     Behat\MinkExtension:
-      files_path: %paths.base%/../vendor/cw/behat_test/Sample_Files/Behat/images
+      files_path: %paths.base%/images
       goutte: ~
     Drupal\DrupalExtension:
       blackbox: ~
